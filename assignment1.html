@@ -24,6 +24,7 @@
         h1 {
             text-align: center;
             color: #b76e79;
+            margin-bottom: 30px;
         }
 
         h2 {
@@ -39,16 +40,62 @@
             line-height: 1.7;
         }
 
-        .info {
+        /* TOP INFORMATION SECTION */
+
+        .profile-section {
             background-color: #fff5f8;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
         }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+        }
+
+        .profile-photo {
+            width: 170px;
+            height: 210px;
+            object-fit: cover;
+
+            border: 5px solid #f7d6df;
+            border-radius: 18px;
+
+            padding: 4px;
+            background-color: white;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        /* COMPANIES */
 
         .company {
             margin-bottom: 25px;
         }
+
+        /* LINKS */
+
+        .company-link,
+        .article-link {
+            color: #b76e79;
+            text-decoration: underline;
+        }
+
+        .company-link:hover,
+        .article-link:hover {
+            color: #8f4f5b;
+        }
+
+        /* BACK BUTTON */
 
         .back {
             display: inline-block;
@@ -64,28 +111,79 @@
             background-color: #efbdca;
         }
 
-        .company-link,
-        .article-link {
-            color: #b76e79;
-            text-decoration: underline;
+        /* SECOND PHOTO */
+
+        .project-image-section {
+            text-align: center;
+            margin-top: 40px;
         }
 
-        .company-link:hover,
-        .article-link:hover {
-            color: #8f4f5b;
+        .project-image {
+            width: 70%;
+            max-width: 650px;
+
+            border: 5px solid #f7d6df;
+            border-radius: 15px;
+
+            padding: 5px;
+            background-color: white;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
-        img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-top: 15px;
+        /* VIDEO */
+
+        .video-section {
+            margin-top: 40px;
+            text-align: center;
         }
 
-        video {
-            max-width: 100%;
-            margin-top: 20px;
-            border-radius: 10px;
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* PHONE / SMALL SCREEN */
+
+        @media (max-width: 650px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .profile-section {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 185px;
+            }
+
+            .project-image {
+                width: 100%;
+            }
+        }
+
     </style>
 </head>
 
@@ -97,37 +195,52 @@
 
     <h1>Assignment 1</h1>
 
-    <div class="info">
 
-        <p><strong>Name:</strong> Yasmeen Mohamed</p>
+    <!-- PROFILE SECTION -->
 
-        <p>
-            <strong>Class:</strong>
-            IE 203 Computer Graphics Fall 2026
-        </p>
+    <div class="profile-section">
 
-        <p>
-            <strong>Professor:</strong>
-            Ranky
-        </p>
+        <div class="profile-info">
 
-        <p>
-            <strong>Date:</strong>
-            9/18/2026
-        </p>
+            <p><strong>Name:</strong> Yasmeen Mohamed</p>
 
-        <p>
-            <strong>Main Office:</strong>
-            New Jersey, USA
-        </p>
+            <p>
+                <strong>Class:</strong>
+                IE 203 Computer Graphics Fall 2026
+            </p>
 
-        <p>
-            <strong>Branch Office:</strong>
-            Cairo, Egypt
-        </p>
+            <p>
+                <strong>Professor:</strong>
+                Ranky
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                9/18/2026
+            </p>
+
+            <p>
+                <strong>Main Office:</strong>
+                New Jersey, USA
+            </p>
+
+            <p>
+                <strong>Branch Office:</strong>
+                Cairo, Egypt
+            </p>
+
+        </div>
+
+
+        <img
+            class="profile-photo"
+            src="PHOTO-2026-09-21-01-42-45.jpg"
+            alt="Yasmeen Mohamed">
 
     </div>
 
+
+    <!-- COLLABORATING COMPANIES -->
 
     <h2>Collaborating Companies</h2>
 
@@ -235,6 +348,8 @@
     </div>
 
 
+    <!-- COMPANY -->
+
     <h2>My Company</h2>
 
     <h3>Yasso Green Inc</h3>
@@ -244,6 +359,8 @@
         design, efficient manufacturing, and environmentally friendly solutions.
     </p>
 
+
+    <!-- PROJECT -->
 
     <h2>My Project Title</h2>
 
@@ -275,6 +392,8 @@
         the product.
     </p>
 
+
+    <!-- ARTICLES -->
 
     <h2>Article 1</h2>
 
@@ -331,22 +450,38 @@
     </p>
 
 
-    <!-- YOUR PHOTO WILL GO HERE -->
+    <!-- SECOND IMAGE -->
+
+    <div class="project-image-section">
+
+        <h2>Project Image</h2>
+
+        <img
+            class="project-image"
+            src="PHOTO-2026-09-21-01-49-53.jpg"
+            alt="Assignment 1 Project Image">
+
+    </div>
 
 
-   <h2>Video</h2>
+    <!-- VIDEO -->
 
-<div style="text-align: center; margin-top: 20px;">
-    <iframe
-        width="100%"
-        height="500"
-        src="https://www.youtube.com/embed/uKG5pgO3Z9o"
-        title="Assignment 1 Video"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
-</div>
+    <div class="video-section">
+
+        <h2>Video</h2>
+
+        <div class="video-container">
+
+            <iframe
+                src="https://www.youtube.com/embed/uKG5pgO3Z9o"
+                title="Assignment 1 Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
 
 
 </div>
