@@ -4,6 +4,11 @@
     <title>Assignment 1 - IE 203</title>
 
     <style>
+
+        /* ================================================= */
+        /* YOUR ORIGINAL STYLING                             */
+        /* ================================================= */
+
         body {
             background-color: #fff5f8;
             font-family: Arial, sans-serif;
@@ -19,6 +24,13 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+            /* Allows decorations without changing layout */
+            position: relative;
+            overflow: hidden;
+
+            /* Cute opening effect */
+            animation: pageOpen 1.2s ease-out;
         }
 
         h1 {
@@ -40,8 +52,6 @@
             line-height: 1.7;
         }
 
-        
-
         .profile-section {
             background-color: #fff5f8;
             padding: 25px;
@@ -52,6 +62,9 @@
             justify-content: space-between;
             align-items: center;
             gap: 30px;
+
+            position: relative;
+            z-index: 3;
         }
 
         .profile-info {
@@ -76,13 +89,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
-        
-
         .company {
             margin-bottom: 25px;
         }
-
-       
 
         .company-link,
         .article-link {
@@ -94,8 +103,6 @@
         .article-link:hover {
             color: #8f4f5b;
         }
-
-        
 
         .back {
             display: inline-block;
@@ -110,8 +117,6 @@
         .back:hover {
             background-color: #efbdca;
         }
-
-        
 
         .project-image-section {
             text-align: center;
@@ -130,8 +135,6 @@
 
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
-
-        
 
         .video-section {
             margin-top: 40px;
@@ -157,7 +160,502 @@
             border: 0;
         }
 
-       
+
+        /* ================================================= */
+        /* OPENING ANIMATION                                 */
+        /* ================================================= */
+
+        @keyframes pageOpen {
+            0% {
+                opacity: 0;
+                transform: scale(.96);
+                box-shadow: 0 0 0 rgba(255,182,193,0);
+            }
+
+            60% {
+                opacity: 1;
+                transform: scale(1.01);
+                box-shadow: 0 0 35px rgba(255,182,193,.55);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(0,0,0,.1);
+            }
+        }
+
+
+        /* ================================================= */
+        /* PINK INNER BORDER                                 */
+        /* ================================================= */
+
+        .girly-border {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 2px solid #f7ccd8;
+            border-radius: 13px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+
+        /* ================================================= */
+        /* FAIRY LIGHTS                                      */
+        /* ================================================= */
+
+        .fairy-lights {
+            position: absolute;
+            top: 15px;
+            left: 8%;
+            width: 84%;
+            display: flex;
+            justify-content: space-around;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .bulb {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f5a9bd;
+
+            box-shadow:
+                0 0 5px #f5a9bd,
+                0 0 12px #ffc6d5,
+                0 0 20px #ffe6ed;
+
+            animation: lightGlow 1.4s infinite alternate;
+        }
+
+        .bulb:nth-child(even) {
+            animation-delay: .5s;
+        }
+
+        .bulb:nth-child(3n) {
+            animation-delay: 1s;
+        }
+
+        @keyframes lightGlow {
+            from {
+                opacity: .25;
+                transform: scale(.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+
+        /* ================================================= */
+        /* DECORATIONS                                       */
+        /* ================================================= */
+
+        .decoration {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+
+        /* BIG BOWS */
+
+        .bow {
+            font-size: 38px;
+            animation: bowFloat 4s ease-in-out infinite;
+        }
+
+        .bow1 {
+            top: 30px;
+            left: 25px;
+        }
+
+        .bow2 {
+            top: 30px;
+            right: 25px;
+            animation-delay: .8s;
+        }
+
+        .bow3 {
+            top: 520px;
+            left: 30px;
+            font-size: 31px;
+            animation-delay: 1.3s;
+        }
+
+        .bow4 {
+            top: 850px;
+            right: 30px;
+            font-size: 34px;
+            animation-delay: .5s;
+        }
+
+        .bow5 {
+            top: 1200px;
+            left: 28px;
+            font-size: 30px;
+            animation-delay: 1.8s;
+        }
+
+        .bow6 {
+            top: 1500px;
+            right: 28px;
+            font-size: 34px;
+            animation-delay: 1s;
+        }
+
+        @keyframes bowFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(5deg);
+            }
+        }
+
+
+        /* BUTTERFLIES */
+
+        .butterfly {
+            font-size: 30px;
+            animation: butterflyFly 5s ease-in-out infinite;
+        }
+
+        .butterfly1 {
+            top: 160px;
+            left: 35px;
+        }
+
+        .butterfly2 {
+            top: 340px;
+            right: 35px;
+            animation-delay: 1s;
+        }
+
+        .butterfly3 {
+            top: 700px;
+            left: 30px;
+            font-size: 25px;
+            animation-delay: 2s;
+        }
+
+        .butterfly4 {
+            top: 1080px;
+            right: 35px;
+            font-size: 27px;
+            animation-delay: .7s;
+        }
+
+        .butterfly5 {
+            top: 1380px;
+            left: 35px;
+            font-size: 25px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes butterflyFly {
+            0%, 100% {
+                transform: translate(0,0) rotate(-8deg);
+            }
+
+            50% {
+                transform: translate(12px,-15px) rotate(8deg);
+            }
+        }
+
+
+        /* FLOWERS */
+
+        .flower {
+            font-size: 28px;
+            animation: flowerFloat 4s ease-in-out infinite;
+        }
+
+        .flower1 {
+            top: 240px;
+            left: 30px;
+        }
+
+        .flower2 {
+            top: 610px;
+            right: 30px;
+            animation-delay: .8s;
+        }
+
+        .flower3 {
+            top: 940px;
+            left: 30px;
+            animation-delay: 1.4s;
+        }
+
+        .flower4 {
+            top: 1280px;
+            right: 30px;
+            animation-delay: .5s;
+        }
+
+        .flower5 {
+            top: 1600px;
+            left: 30px;
+            animation-delay: 1.1s;
+        }
+
+        @keyframes flowerFloat {
+            0%, 100% {
+                transform: rotate(-5deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(7deg) scale(1.1);
+            }
+        }
+
+
+        /* ================================================= */
+        /* HEARTS                                            */
+        /* ================================================= */
+
+        .heart {
+            color: #efa1b7;
+            text-shadow: 0 0 8px #ffd8e3;
+            animation: heartFloat 3.5s ease-in-out infinite;
+        }
+
+        .heart1 {
+            top: 100px;
+            left: 100px;
+            font-size: 25px;
+        }
+
+        .heart2 {
+            top: 180px;
+            right: 90px;
+            font-size: 34px;
+            animation-delay: .7s;
+        }
+
+        .heart3 {
+            top: 430px;
+            left: 28px;
+            font-size: 32px;
+            animation-delay: 1.2s;
+        }
+
+        .heart4 {
+            top: 540px;
+            right: 25px;
+            font-size: 24px;
+            animation-delay: .4s;
+        }
+
+        .heart5 {
+            top: 760px;
+            right: 35px;
+            font-size: 37px;
+            animation-delay: 1.4s;
+        }
+
+        .heart6 {
+            top: 860px;
+            left: 35px;
+            font-size: 26px;
+            animation-delay: .9s;
+        }
+
+        .heart7 {
+            top: 1050px;
+            left: 28px;
+            font-size: 38px;
+            animation-delay: .2s;
+        }
+
+        .heart8 {
+            top: 1180px;
+            right: 30px;
+            font-size: 29px;
+            animation-delay: 1.6s;
+        }
+
+        .heart9 {
+            top: 1350px;
+            left: 28px;
+            font-size: 24px;
+            animation-delay: .6s;
+        }
+
+        .heart10 {
+            top: 1480px;
+            right: 28px;
+            font-size: 38px;
+            animation-delay: 1.1s;
+        }
+
+        .heart11 {
+            top: 1650px;
+            left: 40px;
+            font-size: 30px;
+            animation-delay: 1.7s;
+        }
+
+        .heart12 {
+            top: 1780px;
+            right: 35px;
+            font-size: 26px;
+            animation-delay: .8s;
+        }
+
+        @keyframes heartFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+        }
+
+
+        /* ================================================= */
+        /* GLITTER / SPARKLES                                */
+        /* ================================================= */
+
+        .sparkle {
+            color: #eaa0b6;
+            animation: glitter 1.3s infinite alternate;
+        }
+
+        .sparkle1 {
+            top: 90px;
+            right: 150px;
+            font-size: 20px;
+        }
+
+        .sparkle2 {
+            top: 280px;
+            left: 100px;
+            font-size: 17px;
+            animation-delay: .5s;
+        }
+
+        .sparkle3 {
+            top: 480px;
+            right: 100px;
+            font-size: 21px;
+            animation-delay: .9s;
+        }
+
+        .sparkle4 {
+            top: 680px;
+            left: 90px;
+            font-size: 18px;
+            animation-delay: .3s;
+        }
+
+        .sparkle5 {
+            top: 900px;
+            right: 90px;
+            font-size: 22px;
+            animation-delay: .7s;
+        }
+
+        .sparkle6 {
+            top: 1120px;
+            left: 90px;
+            font-size: 19px;
+            animation-delay: 1.1s;
+        }
+
+        .sparkle7 {
+            top: 1320px;
+            right: 100px;
+            font-size: 21px;
+            animation-delay: .4s;
+        }
+
+        .sparkle8 {
+            top: 1550px;
+            left: 100px;
+            font-size: 20px;
+            animation-delay: .8s;
+        }
+
+        .sparkle9 {
+            top: 1750px;
+            right: 100px;
+            font-size: 19px;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes glitter {
+            from {
+                opacity: .15;
+                transform: scale(.5) rotate(0deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.4) rotate(25deg);
+            }
+        }
+
+
+        /* ================================================= */
+        /* SMALL FLOATING GLITTER DOTS                       */
+        /* ================================================= */
+
+        .glitter-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #f7b5c7;
+            box-shadow: 0 0 10px #f5a9bd;
+            pointer-events: none;
+            z-index: 1;
+            animation: glitterDot 2s infinite alternate;
+        }
+
+        .dot1 { top: 200px; left: 15%; }
+        .dot2 { top: 350px; right: 14%; animation-delay: .4s; }
+        .dot3 { top: 600px; left: 12%; animation-delay: .8s; }
+        .dot4 { top: 800px; right: 13%; animation-delay: 1.2s; }
+        .dot5 { top: 1050px; left: 15%; animation-delay: .3s; }
+        .dot6 { top: 1250px; right: 15%; animation-delay: .7s; }
+        .dot7 { top: 1450px; left: 13%; animation-delay: 1.1s; }
+        .dot8 { top: 1700px; right: 13%; animation-delay: .5s; }
+
+        @keyframes glitterDot {
+            from {
+                opacity: .2;
+                transform: scale(.6);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+
+        /* ================================================= */
+        /* CONTENT ABOVE DECORATIONS                         */
+        /* ================================================= */
+
+        .page-content {
+            position: relative;
+            z-index: 5;
+        }
+
+
+        /* ================================================= */
+        /* MOBILE                                            */
+        /* ================================================= */
 
         @media (max-width: 650px) {
 
@@ -182,303 +680,415 @@
             .project-image {
                 width: 100%;
             }
+
+            .bow {
+                font-size: 24px;
+            }
+
+            .butterfly,
+            .flower {
+                font-size: 20px;
+            }
+
+            .heart {
+                opacity: .55;
+            }
         }
 
     </style>
 </head>
 
+
 <body>
 
 <div class="container">
 
-    <a class="back" href="index.html">← Back to Assignments</a>
+    <!-- GIRLY BORDER -->
 
-    <h1>Assignment 1</h1>
+    <div class="girly-border"></div>
+
+
+    <!-- FAIRY LIGHTS -->
+
+    <div class="fairy-lights">
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+    </div>
+
+
+    <!-- BOWS -->
+
+    <div class="decoration bow bow1">🎀</div>
+    <div class="decoration bow bow2">🎀</div>
+    <div class="decoration bow bow3">🎀</div>
+    <div class="decoration bow bow4">🎀</div>
+    <div class="decoration bow bow5">🎀</div>
+    <div class="decoration bow bow6">🎀</div>
+
+
+    <!-- BUTTERFLIES -->
+
+    <div class="decoration butterfly butterfly1">🦋</div>
+    <div class="decoration butterfly butterfly2">🦋</div>
+    <div class="decoration butterfly butterfly3">🦋</div>
+    <div class="decoration butterfly butterfly4">🦋</div>
+    <div class="decoration butterfly butterfly5">🦋</div>
+
+
+    <!-- FLOWERS -->
+
+    <div class="decoration flower flower1">🌸</div>
+    <div class="decoration flower flower2">🌷</div>
+    <div class="decoration flower flower3">🌸</div>
+    <div class="decoration flower flower4">🌷</div>
+    <div class="decoration flower flower5">🌸</div>
+
+
+    <!-- HEARTS -->
+
+    <div class="decoration heart heart1">♥</div>
+    <div class="decoration heart heart2">♡</div>
+    <div class="decoration heart heart3">♡</div>
+    <div class="decoration heart heart4">♥</div>
+    <div class="decoration heart heart5">♥</div>
+    <div class="decoration heart heart6">♡</div>
+    <div class="decoration heart heart7">♥</div>
+    <div class="decoration heart heart8">♡</div>
+    <div class="decoration heart heart9">♥</div>
+    <div class="decoration heart heart10">♡</div>
+    <div class="decoration heart heart11">♥</div>
+    <div class="decoration heart heart12">♡</div>
+
+
+    <!-- SPARKLES -->
+
+    <div class="decoration sparkle sparkle1">✦</div>
+    <div class="decoration sparkle sparkle2">✧</div>
+    <div class="decoration sparkle sparkle3">✦</div>
+    <div class="decoration sparkle sparkle4">✧</div>
+    <div class="decoration sparkle sparkle5">✦</div>
+    <div class="decoration sparkle sparkle6">✧</div>
+    <div class="decoration sparkle sparkle7">✦</div>
+    <div class="decoration sparkle sparkle8">✧</div>
+    <div class="decoration sparkle sparkle9">✦</div>
+
+
+    <!-- GLITTER DOTS -->
+
+    <span class="glitter-dot dot1"></span>
+    <span class="glitter-dot dot2"></span>
+    <span class="glitter-dot dot3"></span>
+    <span class="glitter-dot dot4"></span>
+    <span class="glitter-dot dot5"></span>
+    <span class="glitter-dot dot6"></span>
+    <span class="glitter-dot dot7"></span>
+    <span class="glitter-dot dot8"></span>
 
 
 
-    <div class="profile-section">
+    <!-- ================================================= -->
+    <!-- YOUR ORIGINAL CONTENT STARTS HERE                  -->
+    <!-- ================================================= -->
 
-        <div class="profile-info">
+    <div class="page-content">
 
-            <p><strong>Name:</strong> Yasmeen Mohamed</p>
+        <a class="back" href="index.html">← Back to Assignments</a>
 
-            <p>
-                <strong>Class:</strong>
-                IE 203 Computer Graphics Fall 2026
-            </p>
+        <h1>Assignment 1</h1>
 
-            <p>
-                <strong>Professor:</strong>
-                Ranky
-            </p>
 
-            <p>
-                <strong>Date:</strong>
-                9/18/2026
-            </p>
+        <div class="profile-section">
 
-            <p>
-                <strong>Main Office:</strong>
-                New Jersey, USA
-            </p>
+            <div class="profile-info">
 
-            <p>
-                <strong>Branch Office:</strong>
-                Cairo, Egypt
-            </p>
+                <p><strong>Name:</strong> Yasmeen Mohamed</p>
+
+                <p>
+                    <strong>Class:</strong>
+                    IE 203 Computer Graphics Fall 2026
+                </p>
+
+                <p>
+                    <strong>Professor:</strong>
+                    Ranky
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    9/18/2026
+                </p>
+
+                <p>
+                    <strong>Main Office:</strong>
+                    New Jersey, USA
+                </p>
+
+                <p>
+                    <strong>Branch Office:</strong>
+                    Cairo, Egypt
+                </p>
+
+            </div>
+
+
+            <img
+                class="profile-photo"
+                src="PHOTO-2026-09-21-01-42-45.jpg"
+                alt="Yasmeen Mohamed">
 
         </div>
 
 
-        <img
-            class="profile-photo"
-            src="PHOTO-2026-09-21-01-42-45.jpg"
-            alt="Yasmeen Mohamed">
 
-    </div>
+        <h2>Collaborating Companies</h2>
 
 
-    
+        <div class="company">
 
-    <h2>Collaborating Companies</h2>
+            <h3>
+                1.
+                <a class="company-link"
+                   href="https://www.verescence.com/en/"
+                   target="_blank">
+                    Verescence
+                </a>
+            </h3>
+
+            <p>
+                Leading company in glass manufacturing for perfume and cosmetic
+                products including:
+            </p>
+
+            <ul>
+                <li>Perfume glass bottles</li>
+                <li>Sustainable glass packaging</li>
+                <li>Recycled glass</li>
+                <li>Refillable and reusable bottle solutions</li>
+            </ul>
+
+        </div>
 
 
-    <div class="company">
+        <div class="company">
+
+            <h3>
+                2.
+                <a class="company-link"
+                   href="https://aptar.com/en-us/beauty"
+                   target="_blank">
+                    Aptar Beauty
+                </a>
+            </h3>
+
+            <p>
+                Leading company in fragrance dispensing and refill systems including:
+            </p>
+
+            <ul>
+                <li>Perfume pumps and sprayers</li>
+                <li>Refill systems</li>
+                <li>Caps and closures</li>
+                <li>Sustainable dispensing solutions</li>
+            </ul>
+
+        </div>
+
+
+        <div class="company">
+
+            <h3>
+                3.
+                <a class="company-link"
+                   href="https://www.autodesk.com/products"
+                   target="_blank">
+                    Autodesk
+                </a>
+            </h3>
+
+            <p>
+                Leading company in computer graphics and engineering design software
+                including:
+            </p>
+
+            <ul>
+                <li>3D CAD modeling</li>
+                <li>Product visualization</li>
+                <li>Prototype design</li>
+                <li>Design for manufacturing</li>
+            </ul>
+
+        </div>
+
+
+        <div class="company">
+
+            <h3>
+                4.
+                <a class="company-link"
+                   href="https://www.berlinpackaging.com/"
+                   target="_blank">
+                    Berlin Packaging
+                </a>
+            </h3>
+
+            <p>
+                Leading packaging company providing fragrance and cosmetic packaging
+                including:
+            </p>
+
+            <ul>
+                <li>Perfume and fragrance packaging</li>
+                <li>Bottles and closures</li>
+                <li>Custom packaging design</li>
+                <li>Sustainable packaging solutions</li>
+            </ul>
+
+        </div>
+
+
+
+        <h2>My Company</h2>
+
+        <h3>Yasso Green Inc</h3>
+
+        <p>
+            A company focused on improving perfume bottles through sustainable
+            design, efficient manufacturing, and environmentally friendly solutions.
+        </p>
+
+
+
+        <h2>My Project Title</h2>
+
+        <h3>Sustainable Refillable Perfume Bottle Design</h3>
+
+        <p>
+            My project is to improve traditional perfume bottles by making them
+            refillable, reusable, and more durable. Since perfume bottles are made
+            of glass and can easily break, my goal is to design a bottle that lasts
+            longer and can be refilled instead of thrown away. This will reduce
+            waste, save materials, and create a more sustainable product. Lean
+            thinking will help reduce waste and unnecessary production steps, while
+            Visual Factory Management will help organize the production process.
+        </p>
+
+        <p>
+            Computer Graphics in IE will be used to design and visualize my perfume
+            bottle before making the physical product. I will use 2D drawings and
+            3D models to develop and improve the bottle's shape and design.
+        </p>
+
+        <p>
+            Yasso Green Inc. will collaborate with Verescence for the glass bottle,
+            Aptar Beauty for the refill system and sprayer, Autodesk for the 2D and
+            3D design, and Berlin Packaging for sustainable packaging. Together, the
+            five companies will create a refillable, reusable, and more durable
+            perfume bottle while considering product safety, responsible
+            manufacturing, and the environmental, economic, and social impacts of
+            the product.
+        </p>
+
+
+
+        <h2>Article 1</h2>
 
         <h3>
-            1.
-            <a class="company-link"
-               href="https://www.verescence.com/en/"
+            <a class="article-link"
+               href="https://www.qualitydigest.com/inside/manufacturing-article/why-products-still-fail-rohs-reach-and-pops-compliance-090926.html"
                target="_blank">
-                Verescence
+                Why Products Still Fail RoHS, REACH, and POPs Compliance
             </a>
         </h3>
 
         <p>
-            Leading company in glass manufacturing for perfume and cosmetic
-            products including:
+            I found this article interesting because it explains how products can
+            fail environmental compliance when materials, suppliers, or regulations
+            change. It shows why companies need to keep their product information
+            updated and make sure their products continue to meet environmental
+            requirements.
         </p>
 
-        <ul>
-            <li>Perfume glass bottles</li>
-            <li>Sustainable glass packaging</li>
-            <li>Recycled glass</li>
-            <li>Refillable and reusable bottle solutions</li>
-        </ul>
-
-    </div>
 
 
-    <div class="company">
+        <h2>Article 2</h2>
 
         <h3>
-            2.
-            <a class="company-link"
-               href="https://aptar.com/en-us/beauty"
+            <a class="article-link"
+               href="https://www.qualitydigest.com/inside/improvement-tools-article/building-automation-and-control-system-cybersecurity-090926.html"
                target="_blank">
-                Aptar Beauty
+                Building Automation and Control System Cybersecurity
             </a>
         </h3>
 
         <p>
-            Leading company in fragrance dispensing and refill systems including:
+            I found this article interesting because it explains how building
+            automation systems can be at risk of cyberattacks. It shows the
+            importance of cybersecurity for protecting systems such as HVAC,
+            lighting, access control, and other important building operations.
         </p>
 
-        <ul>
-            <li>Perfume pumps and sprayers</li>
-            <li>Refill systems</li>
-            <li>Caps and closures</li>
-            <li>Sustainable dispensing solutions</li>
-        </ul>
-
-    </div>
 
 
-    <div class="company">
+        <h2>Article 3</h2>
 
         <h3>
-            3.
-            <a class="company-link"
-               href="https://www.autodesk.com/products"
+            <a class="article-link"
+               href="https://techcrunch.com/2026/09/09/everything-apple-announced-at-its-fall-iphone-event-from-the-foldable-iphone-duo-to-an-always-listening-apple-watch/"
                target="_blank">
-                Autodesk
+                Apple's New Technology
             </a>
         </h3>
 
         <p>
-            Leading company in computer graphics and engineering design software
-            including:
+            I found this article interesting because it shows how Apple is improving
+            its products with new technology. The new products include a foldable
+            iPhone, improved cameras, and new AI features for the Apple Watch and
+            AirPods.
         </p>
 
-        <ul>
-            <li>3D CAD modeling</li>
-            <li>Product visualization</li>
-            <li>Prototype design</li>
-            <li>Design for manufacturing</li>
-        </ul>
-
-    </div>
 
 
-    <div class="company">
+        <div class="project-image-section">
 
-        <h3>
-            4.
-            <a class="company-link"
-               href="https://www.berlinpackaging.com/"
-               target="_blank">
-                Berlin Packaging
-            </a>
-        </h3>
+            <img
+                class="project-image"
+                src="PHOTO-2026-09-21-01-49-53.jpg"
+                alt="Assignment 1 Project Image">
 
-        <p>
-            Leading packaging company providing fragrance and cosmetic packaging
-            including:
-        </p>
-
-        <ul>
-            <li>Perfume and fragrance packaging</li>
-            <li>Bottles and closures</li>
-            <li>Custom packaging design</li>
-            <li>Sustainable packaging solutions</li>
-        </ul>
-
-    </div>
-
-
-    
-
-    <h2>My Company</h2>
-
-    <h3>Yasso Green Inc</h3>
-
-    <p>
-        A company focused on improving perfume bottles through sustainable
-        design, efficient manufacturing, and environmentally friendly solutions.
-    </p>
+        </div>
 
 
 
-    <h2>My Project Title</h2>
+        <div class="video-section">
 
-    <h3>Sustainable Refillable Perfume Bottle Design</h3>
+            <h2>Video</h2>
 
-    <p>
-        My project is to improve traditional perfume bottles by making them
-        refillable, reusable, and more durable. Since perfume bottles are made
-        of glass and can easily break, my goal is to design a bottle that lasts
-        longer and can be refilled instead of thrown away. This will reduce
-        waste, save materials, and create a more sustainable product. Lean
-        thinking will help reduce waste and unnecessary production steps, while
-        Visual Factory Management will help organize the production process.
-    </p>
+            <div class="video-container">
 
-    <p>
-        Computer Graphics in IE will be used to design and visualize my perfume
-        bottle before making the physical product. I will use 2D drawings and
-        3D models to develop and improve the bottle's shape and design.
-    </p>
+                <iframe
+                    src="https://www.youtube.com/embed/uKG5pgO3Z9o"
+                    title="Assignment 1 Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
 
-    <p>
-        Yasso Green Inc. will collaborate with Verescence for the glass bottle,
-        Aptar Beauty for the refill system and sprayer, Autodesk for the 2D and
-        3D design, and Berlin Packaging for sustainable packaging. Together, the
-        five companies will create a refillable, reusable, and more durable
-        perfume bottle while considering product safety, responsible
-        manufacturing, and the environmental, economic, and social impacts of
-        the product.
-    </p>
-
-
-
-    <h2>Article 1</h2>
-
-    <h3>
-        <a class="article-link"
-           href="https://www.qualitydigest.com/inside/manufacturing-article/why-products-still-fail-rohs-reach-and-pops-compliance-090926.html"
-           target="_blank">
-            Why Products Still Fail RoHS, REACH, and POPs Compliance
-        </a>
-    </h3>
-
-    <p>
-        I found this article interesting because it explains how products can
-        fail environmental compliance when materials, suppliers, or regulations
-        change. It shows why companies need to keep their product information
-        updated and make sure their products continue to meet environmental
-        requirements.
-    </p>
-
-
-    <h2>Article 2</h2>
-
-    <h3>
-        <a class="article-link"
-           href="https://www.qualitydigest.com/inside/improvement-tools-article/building-automation-and-control-system-cybersecurity-090926.html"
-           target="_blank">
-            Building Automation and Control System Cybersecurity
-        </a>
-    </h3>
-
-    <p>
-        I found this article interesting because it explains how building
-        automation systems can be at risk of cyberattacks. It shows the
-        importance of cybersecurity for protecting systems such as HVAC,
-        lighting, access control, and other important building operations.
-    </p>
-
-
-    <h2>Article 3</h2>
-
-    <h3>
-        <a class="article-link"
-           href="https://techcrunch.com/2026/09/09/everything-apple-announced-at-its-fall-iphone-event-from-the-foldable-iphone-duo-to-an-always-listening-apple-watch/"
-           target="_blank">
-            Apple's New Technology
-        </a>
-    </h3>
-
-    <p>
-        I found this article interesting because it shows how Apple is improving
-        its products with new technology. The new products include a foldable
-        iPhone, improved cameras, and new AI features for the Apple Watch and
-        AirPods.
-    </p>
-
-
-    
-
-    <div class="project-image-section">
-
-
-
-        <img
-            class="project-image"
-            src="PHOTO-2026-09-21-01-49-53.jpg"
-            alt="Assignment 1 Project Image">
-
-    </div>
-
-
-
-    <div class="video-section">
-
-        <h2>Video</h2>
-
-        <div class="video-container">
-
-            <iframe
-                src="https://www.youtube.com/embed/uKG5pgO3Z9o"
-                title="Assignment 1 Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+            </div>
 
         </div>
 
     </div>
-
 
 </div>
 
