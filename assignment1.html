@@ -6,7 +6,7 @@
     <style>
 
         /* ================================================= */
-        /* YOUR ORIGINAL STYLING                             */
+        /* ORIGINAL PAGE STYLING                             */
         /* ================================================= */
 
         body {
@@ -23,14 +23,18 @@
             margin: auto;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
-            /* Allows decorations without changing layout */
+            box-shadow:
+                0 4px 12px rgba(0,0,0,0.1),
+                0 0 18px rgba(255, 180, 200, 0.45),
+                0 0 38px rgba(255, 210, 225, 0.30);
+
             position: relative;
             overflow: hidden;
 
-            /* Cute opening effect */
-            animation: pageOpen 1.2s ease-out;
+            animation:
+                pageOpen 1.2s ease-out,
+                outsideGlow 3s ease-in-out 1.2s infinite alternate;
         }
 
         h1 {
@@ -52,6 +56,11 @@
             line-height: 1.7;
         }
 
+
+        /* ================================================= */
+        /* PROFILE SECTION                                   */
+        /* ================================================= */
+
         .profile-section {
             background-color: #fff5f8;
             padding: 25px;
@@ -64,7 +73,7 @@
             gap: 30px;
 
             position: relative;
-            z-index: 3;
+            z-index: 5;
         }
 
         .profile-info {
@@ -86,8 +95,15 @@
             padding: 4px;
             background-color: white;
 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.15),
+                0 0 12px rgba(255,182,193,.45);
         }
+
+
+        /* ================================================= */
+        /* COMPANIES                                         */
+        /* ================================================= */
 
         .company {
             margin-bottom: 25px;
@@ -104,6 +120,11 @@
             color: #8f4f5b;
         }
 
+
+        /* ================================================= */
+        /* BACK BUTTON                                       */
+        /* ================================================= */
+
         .back {
             display: inline-block;
             background-color: #f7d6df;
@@ -117,6 +138,11 @@
         .back:hover {
             background-color: #efbdca;
         }
+
+
+        /* ================================================= */
+        /* PROJECT IMAGE                                     */
+        /* ================================================= */
 
         .project-image-section {
             text-align: center;
@@ -133,8 +159,15 @@
             padding: 5px;
             background-color: white;
 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.15),
+                0 0 14px rgba(255,182,193,.40);
         }
+
+
+        /* ================================================= */
+        /* VIDEO                                             */
+        /* ================================================= */
 
         .video-section {
             margin-top: 40px;
@@ -148,7 +181,10 @@
             height: 0;
             overflow: hidden;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.15),
+                0 0 15px rgba(255,182,193,.35);
         }
 
         .video-container iframe {
@@ -166,6 +202,7 @@
         /* ================================================= */
 
         @keyframes pageOpen {
+
             0% {
                 opacity: 0;
                 transform: scale(.96);
@@ -175,12 +212,71 @@
             60% {
                 opacity: 1;
                 transform: scale(1.01);
-                box-shadow: 0 0 35px rgba(255,182,193,.55);
+
+                box-shadow:
+                    0 0 30px rgba(255,170,195,.65),
+                    0 0 55px rgba(255,210,225,.40);
             }
 
             100% {
                 transform: scale(1);
-                box-shadow: 0 4px 12px rgba(0,0,0,.1);
+            }
+        }
+
+
+        /* ================================================= */
+        /* GLOWING OUTSIDE EDGE                              */
+        /* ================================================= */
+
+        @keyframes outsideGlow {
+
+            from {
+                box-shadow:
+                    0 4px 12px rgba(0,0,0,.1),
+                    0 0 12px rgba(255,180,200,.30),
+                    0 0 25px rgba(255,210,225,.20);
+            }
+
+            to {
+                box-shadow:
+                    0 4px 12px rgba(0,0,0,.1),
+                    0 0 24px rgba(255,155,190,.60),
+                    0 0 48px rgba(255,200,220,.40);
+            }
+        }
+
+
+        /* ================================================= */
+        /* GLOWING INNER EDGE                                */
+        /* ================================================= */
+
+        .container::before {
+            content: "";
+            position: absolute;
+            inset: 5px;
+            border-radius: 13px;
+            pointer-events: none;
+            z-index: 3;
+
+            box-shadow:
+                inset 0 0 12px rgba(255,170,195,.50),
+                inset 0 0 28px rgba(255,210,225,.30);
+
+            animation: innerGlow 2.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes innerGlow {
+
+            from {
+                box-shadow:
+                    inset 0 0 8px rgba(255,180,200,.30),
+                    inset 0 0 18px rgba(255,215,225,.20);
+            }
+
+            to {
+                box-shadow:
+                    inset 0 0 18px rgba(255,150,185,.65),
+                    inset 0 0 35px rgba(255,205,220,.45);
             }
         }
 
@@ -195,10 +291,16 @@
             left: 12px;
             right: 12px;
             bottom: 12px;
+
             border: 2px solid #f7ccd8;
             border-radius: 13px;
+
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
+
+            box-shadow:
+                0 0 7px rgba(255,175,200,.50),
+                inset 0 0 7px rgba(255,200,215,.35);
         }
 
 
@@ -211,16 +313,19 @@
             top: 15px;
             left: 8%;
             width: 84%;
+
             display: flex;
             justify-content: space-around;
+
             pointer-events: none;
-            z-index: 2;
+            z-index: 4;
         }
 
         .bulb {
             width: 8px;
             height: 8px;
             border-radius: 50%;
+
             background: #f5a9bd;
 
             box-shadow:
@@ -240,6 +345,7 @@
         }
 
         @keyframes lightGlow {
+
             from {
                 opacity: .25;
                 transform: scale(.7);
@@ -263,7 +369,9 @@
         }
 
 
-        /* BIG BOWS */
+        /* ================================================= */
+        /* BOWS                                              */
+        /* ================================================= */
 
         .bow {
             font-size: 38px;
@@ -310,6 +418,7 @@
         }
 
         @keyframes bowFloat {
+
             0%, 100% {
                 transform: translateY(0) rotate(-5deg);
             }
@@ -320,7 +429,9 @@
         }
 
 
-        /* BUTTERFLIES */
+        /* ================================================= */
+        /* BUTTERFLIES                                       */
+        /* ================================================= */
 
         .butterfly {
             font-size: 30px;
@@ -360,6 +471,7 @@
         }
 
         @keyframes butterflyFly {
+
             0%, 100% {
                 transform: translate(0,0) rotate(-8deg);
             }
@@ -370,7 +482,9 @@
         }
 
 
-        /* FLOWERS */
+        /* ================================================= */
+        /* FLOWERS                                           */
+        /* ================================================= */
 
         .flower {
             font-size: 28px;
@@ -407,6 +521,7 @@
         }
 
         @keyframes flowerFloat {
+
             0%, 100% {
                 transform: rotate(-5deg) scale(1);
             }
@@ -418,12 +533,15 @@
 
 
         /* ================================================= */
-        /* HEARTS                                            */
+        /* EXISTING HEARTS                                   */
         /* ================================================= */
 
         .heart {
             color: #efa1b7;
-            text-shadow: 0 0 8px #ffd8e3;
+
+            text-shadow:
+                0 0 8px #ffd8e3;
+
             animation: heartFloat 3.5s ease-in-out infinite;
         }
 
@@ -511,6 +629,7 @@
         }
 
         @keyframes heartFloat {
+
             0%, 100% {
                 transform: translateY(0) rotate(-5deg);
             }
@@ -593,6 +712,7 @@
         }
 
         @keyframes glitter {
+
             from {
                 opacity: .15;
                 transform: scale(.5) rotate(0deg);
@@ -606,18 +726,23 @@
 
 
         /* ================================================= */
-        /* SMALL FLOATING GLITTER DOTS                       */
+        /* GLITTER DOTS                                      */
         /* ================================================= */
 
         .glitter-dot {
             position: absolute;
             width: 6px;
             height: 6px;
+
             border-radius: 50%;
             background: #f7b5c7;
-            box-shadow: 0 0 10px #f5a9bd;
+
+            box-shadow:
+                0 0 10px #f5a9bd;
+
             pointer-events: none;
             z-index: 1;
+
             animation: glitterDot 2s infinite alternate;
         }
 
@@ -631,6 +756,7 @@
         .dot8 { top: 1700px; right: 13%; animation-delay: .5s; }
 
         @keyframes glitterDot {
+
             from {
                 opacity: .2;
                 transform: scale(.6);
@@ -639,6 +765,216 @@
             to {
                 opacity: 1;
                 transform: scale(1.5);
+            }
+        }
+
+
+        /* ================================================= */
+        /* NEW FALLING HEARTS - OPENING ONLY                 */
+        /* ================================================= */
+
+        .heart-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100vh;
+
+            overflow: hidden;
+            pointer-events: none;
+
+            z-index: 1000;
+        }
+
+        .falling-heart {
+            position: absolute;
+            top: -50px;
+
+            color: #f19db6;
+            opacity: 0;
+
+            text-shadow:
+                0 0 5px #ffb9ce,
+                0 0 10px #ffd2df,
+                0 0 18px #ffeaf0;
+
+            animation: heartFall 5.5s ease-in forwards;
+        }
+
+        .falling-heart:nth-child(1) {
+            left: 3%;
+            font-size: 17px;
+            animation-delay: 0s;
+        }
+
+        .falling-heart:nth-child(2) {
+            left: 9%;
+            font-size: 24px;
+            animation-delay: .4s;
+        }
+
+        .falling-heart:nth-child(3) {
+            left: 15%;
+            font-size: 14px;
+            animation-delay: 1s;
+        }
+
+        .falling-heart:nth-child(4) {
+            left: 21%;
+            font-size: 20px;
+            animation-delay: .2s;
+        }
+
+        .falling-heart:nth-child(5) {
+            left: 27%;
+            font-size: 16px;
+            animation-delay: 1.4s;
+        }
+
+        .falling-heart:nth-child(6) {
+            left: 33%;
+            font-size: 25px;
+            animation-delay: .7s;
+        }
+
+        .falling-heart:nth-child(7) {
+            left: 39%;
+            font-size: 18px;
+            animation-delay: 1.7s;
+        }
+
+        .falling-heart:nth-child(8) {
+            left: 45%;
+            font-size: 22px;
+            animation-delay: .3s;
+        }
+
+        .falling-heart:nth-child(9) {
+            left: 51%;
+            font-size: 15px;
+            animation-delay: 1.1s;
+        }
+
+        .falling-heart:nth-child(10) {
+            left: 57%;
+            font-size: 26px;
+            animation-delay: .5s;
+        }
+
+        .falling-heart:nth-child(11) {
+            left: 63%;
+            font-size: 17px;
+            animation-delay: 1.8s;
+        }
+
+        .falling-heart:nth-child(12) {
+            left: 69%;
+            font-size: 22px;
+            animation-delay: .9s;
+        }
+
+        .falling-heart:nth-child(13) {
+            left: 75%;
+            font-size: 15px;
+            animation-delay: 1.3s;
+        }
+
+        .falling-heart:nth-child(14) {
+            left: 81%;
+            font-size: 25px;
+            animation-delay: .2s;
+        }
+
+        .falling-heart:nth-child(15) {
+            left: 87%;
+            font-size: 18px;
+            animation-delay: 1.6s;
+        }
+
+        .falling-heart:nth-child(16) {
+            left: 93%;
+            font-size: 22px;
+            animation-delay: .6s;
+        }
+
+        .falling-heart:nth-child(17) {
+            left: 12%;
+            font-size: 15px;
+            animation-delay: 2.1s;
+        }
+
+        .falling-heart:nth-child(18) {
+            left: 25%;
+            font-size: 19px;
+            animation-delay: 2.4s;
+        }
+
+        .falling-heart:nth-child(19) {
+            left: 38%;
+            font-size: 14px;
+            animation-delay: 2s;
+        }
+
+        .falling-heart:nth-child(20) {
+            left: 50%;
+            font-size: 23px;
+            animation-delay: 2.5s;
+        }
+
+        .falling-heart:nth-child(21) {
+            left: 62%;
+            font-size: 16px;
+            animation-delay: 2.2s;
+        }
+
+        .falling-heart:nth-child(22) {
+            left: 74%;
+            font-size: 21px;
+            animation-delay: 2.6s;
+        }
+
+        .falling-heart:nth-child(23) {
+            left: 86%;
+            font-size: 15px;
+            animation-delay: 2.3s;
+        }
+
+        .falling-heart:nth-child(24) {
+            left: 97%;
+            font-size: 19px;
+            animation-delay: 1.9s;
+        }
+
+        @keyframes heartFall {
+
+            0% {
+                top: -50px;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+
+            8% {
+                opacity: .9;
+            }
+
+            30% {
+                transform: translateX(18px) rotate(90deg);
+            }
+
+            55% {
+                transform: translateX(-15px) rotate(180deg);
+            }
+
+            80% {
+                transform: translateX(15px) rotate(260deg);
+                opacity: .8;
+            }
+
+            100% {
+                top: 105vh;
+                opacity: 0;
+                transform: translateX(-8px) rotate(360deg);
             }
         }
 
@@ -701,9 +1037,50 @@
 
 <body>
 
+
+<!-- ================================================= -->
+<!-- FALLING HEARTS WHEN PAGE FIRST OPENS              -->
+<!-- ================================================= -->
+
+<div class="heart-rain">
+
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+
+</div>
+
+
+
 <div class="container">
 
-    <!-- GIRLY BORDER -->
+
+    <!-- GIRLY PINK BORDER -->
 
     <div class="girly-border"></div>
 
@@ -711,6 +1088,7 @@
     <!-- FAIRY LIGHTS -->
 
     <div class="fairy-lights">
+
         <span class="bulb"></span>
         <span class="bulb"></span>
         <span class="bulb"></span>
@@ -718,6 +1096,7 @@
         <span class="bulb"></span>
         <span class="bulb"></span>
         <span class="bulb"></span>
+
         <span class="bulb"></span>
         <span class="bulb"></span>
         <span class="bulb"></span>
@@ -725,6 +1104,7 @@
         <span class="bulb"></span>
         <span class="bulb"></span>
         <span class="bulb"></span>
+
     </div>
 
 
@@ -764,6 +1144,7 @@
     <div class="decoration heart heart4">♥</div>
     <div class="decoration heart heart5">♥</div>
     <div class="decoration heart heart6">♡</div>
+
     <div class="decoration heart heart7">♥</div>
     <div class="decoration heart heart8">♡</div>
     <div class="decoration heart heart9">♥</div>
@@ -799,14 +1180,17 @@
 
 
     <!-- ================================================= -->
-    <!-- YOUR ORIGINAL CONTENT STARTS HERE                  -->
+    <!-- YOUR ORIGINAL ASSIGNMENT CONTENT                  -->
     <!-- ================================================= -->
 
     <div class="page-content">
 
+
         <a class="back" href="index.html">← Back to Assignments</a>
 
+
         <h1>Assignment 1</h1>
+
 
 
         <div class="profile-section">
@@ -852,6 +1236,11 @@
 
 
 
+        <!-- ================================================= -->
+        <!-- COLLABORATING COMPANIES                           -->
+        <!-- ================================================= -->
+
+
         <h2>Collaborating Companies</h2>
 
 
@@ -881,6 +1270,7 @@
         </div>
 
 
+
         <div class="company">
 
             <h3>
@@ -904,6 +1294,7 @@
             </ul>
 
         </div>
+
 
 
         <div class="company">
@@ -930,6 +1321,7 @@
             </ul>
 
         </div>
+
 
 
         <div class="company">
@@ -959,6 +1351,11 @@
 
 
 
+        <!-- ================================================= -->
+        <!-- MY COMPANY                                        -->
+        <!-- ================================================= -->
+
+
         <h2>My Company</h2>
 
         <h3>Yasso Green Inc</h3>
@@ -968,6 +1365,11 @@
             design, efficient manufacturing, and environmentally friendly solutions.
         </p>
 
+
+
+        <!-- ================================================= -->
+        <!-- PROJECT TITLE                                     -->
+        <!-- ================================================= -->
 
 
         <h2>My Project Title</h2>
@@ -1002,6 +1404,11 @@
 
 
 
+        <!-- ================================================= -->
+        <!-- ARTICLE 1                                         -->
+        <!-- ================================================= -->
+
+
         <h2>Article 1</h2>
 
         <h3>
@@ -1020,6 +1427,11 @@
             requirements.
         </p>
 
+
+
+        <!-- ================================================= -->
+        <!-- ARTICLE 2                                         -->
+        <!-- ================================================= -->
 
 
         <h2>Article 2</h2>
@@ -1041,6 +1453,11 @@
 
 
 
+        <!-- ================================================= -->
+        <!-- ARTICLE 3                                         -->
+        <!-- ================================================= -->
+
+
         <h2>Article 3</h2>
 
         <h3>
@@ -1060,6 +1477,11 @@
 
 
 
+        <!-- ================================================= -->
+        <!-- PROJECT IMAGE                                     -->
+        <!-- ================================================= -->
+
+
         <div class="project-image-section">
 
             <img
@@ -1069,6 +1491,11 @@
 
         </div>
 
+
+
+        <!-- ================================================= -->
+        <!-- VIDEO                                             -->
+        <!-- ================================================= -->
 
 
         <div class="video-section">
@@ -1088,9 +1515,11 @@
 
         </div>
 
+
     </div>
 
 </div>
+
 
 </body>
 </html>
