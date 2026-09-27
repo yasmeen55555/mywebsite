@@ -4,6 +4,8 @@
     <title>My Assignments</title>
 
     <style>
+        /* ===== YOUR ORIGINAL STYLING ===== */
+
         body {
             background-color: #fff5f8;
             font-family: Arial, sans-serif;
@@ -33,6 +35,10 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+            /* Needed only to place decorations */
+            position: relative;
+            overflow: hidden;
         }
 
         a {
@@ -51,32 +57,45 @@
         }
 
 
-        /* ======================================= */
-        /* CUTE DECORATIONS - ADDED ONLY */
-        /* ======================================= */
+        /* ========================================= */
+        /* CUTE GIRLY DECORATIONS                    */
+        /* ========================================= */
 
 
-        /* FAIRY LIGHTS */
+        /* Soft pink inner border */
+
+        .pink-border {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 2px solid #f8d5df;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+
+        /* TOP FAIRY LIGHTS */
 
         .fairy-lights {
-            position: fixed;
-            top: 15px;
-            left: 0;
-            width: 100%;
+            position: absolute;
+            top: 17px;
+            left: 8%;
+            width: 84%;
             display: flex;
             justify-content: space-around;
             pointer-events: none;
         }
 
         .bulb {
-            width: 9px;
-            height: 9px;
-            background-color: #ffd1dc;
+            width: 7px;
+            height: 7px;
+            background-color: #f5a9bd;
             border-radius: 50%;
             box-shadow:
-                0 0 8px #ffb6c1,
-                0 0 15px #ffd1dc,
-                0 0 20px white;
+                0 0 6px #f5a9bd,
+                0 0 12px #ffd5df;
             animation: glow 1.5s infinite alternate;
         }
 
@@ -86,49 +105,127 @@
 
         @keyframes glow {
             from {
-                opacity: 0.4;
+                opacity: 0.35;
                 transform: scale(0.8);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1.3);
+                transform: scale(1.4);
             }
         }
 
 
-        /* FLOATING HEARTS */
+        /* BOWS */
 
-        .cute-heart {
-            position: fixed;
-            color: #e89aae;
-            font-size: 25px;
-            opacity: 0.7;
+        .bow {
+            position: absolute;
+            font-size: 36px;
             pointer-events: none;
-            animation: heartFloat 4s ease-in-out infinite;
+            animation: bowFloat 4s ease-in-out infinite;
         }
 
-        .heart-one {
-            left: 6%;
-            top: 25%;
+        .bow-left {
+            top: 20px;
+            left: 25px;
         }
 
-        .heart-two {
-            right: 7%;
-            top: 35%;
+        .bow-right {
+            bottom: 20px;
+            right: 25px;
             animation-delay: 1s;
         }
 
-        .heart-three {
-            left: 10%;
-            bottom: 12%;
-            animation-delay: 2s;
+        @keyframes bowFloat {
+            0%, 100% {
+                transform: rotate(-5deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(5deg) translateY(-5px);
+            }
         }
 
-        .heart-four {
-            right: 12%;
-            bottom: 10%;
+
+        /* BUTTERFLIES */
+
+        .butterfly {
+            position: absolute;
+            font-size: 28px;
+            pointer-events: none;
+            animation: butterflyFloat 4s ease-in-out infinite;
+        }
+
+        .butterfly-left {
+            left: 45px;
+            top: 42%;
+        }
+
+        .butterfly-right {
+            right: 45px;
+            top: 30%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes butterflyFloat {
+            0%, 100% {
+                transform: translate(0, 0) rotate(-7deg);
+            }
+
+            50% {
+                transform: translate(8px, -12px) rotate(7deg);
+            }
+        }
+
+
+        /* HEARTS */
+
+        .heart {
+            position: absolute;
+            color: #ee9fb5;
+            pointer-events: none;
+            animation: heartFloat 3s ease-in-out infinite;
+        }
+
+        .heart1 {
+            top: 75px;
+            left: 35px;
+            font-size: 22px;
+        }
+
+        .heart2 {
+            top: 80px;
+            right: 35px;
+            font-size: 25px;
+            animation-delay: 0.7s;
+        }
+
+        .heart3 {
+            bottom: 40px;
+            left: 55px;
+            font-size: 24px;
+            animation-delay: 1.3s;
+        }
+
+        .heart4 {
+            bottom: 60px;
+            right: 80px;
+            font-size: 20px;
+            animation-delay: 1.8s;
+        }
+
+        .heart5 {
+            top: 48%;
+            left: 25px;
+            font-size: 17px;
             animation-delay: 0.5s;
+        }
+
+        .heart6 {
+            top: 50%;
+            right: 25px;
+            font-size: 17px;
+            animation-delay: 1s;
         }
 
         @keyframes heartFloat {
@@ -137,148 +234,214 @@
             }
 
             50% {
-                transform: translateY(-15px);
-            }
-        }
-
-
-        /* BUTTERFLIES */
-
-        .cute-butterfly {
-            position: fixed;
-            font-size: 30px;
-            pointer-events: none;
-            animation: butterflyFloat 5s ease-in-out infinite;
-        }
-
-        .butterfly-one {
-            left: 5%;
-            top: 55%;
-        }
-
-        .butterfly-two {
-            right: 6%;
-            top: 65%;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes butterflyFloat {
-            0%, 100% {
-                transform: translate(0, 0) rotate(-5deg);
-            }
-
-            50% {
-                transform: translate(12px, -18px) rotate(7deg);
+                transform: translateY(-8px);
             }
         }
 
 
         /* SPARKLES */
 
-        .cute-sparkle {
-            position: fixed;
-            color: #dca3b2;
-            font-size: 20px;
+        .sparkle {
+            position: absolute;
+            color: #e9a3b7;
             pointer-events: none;
-            animation: twinkle 1.7s infinite alternate;
+            animation: sparkleGlow 1.5s infinite alternate;
         }
 
-        .sparkle-one {
-            left: 14%;
-            top: 35%;
+        .sparkle1 {
+            top: 115px;
+            left: 75px;
+            font-size: 19px;
         }
 
-        .sparkle-two {
-            right: 14%;
-            top: 25%;
+        .sparkle2 {
+            top: 130px;
+            right: 75px;
+            font-size: 22px;
             animation-delay: 0.5s;
         }
 
-        .sparkle-three {
-            left: 17%;
-            bottom: 20%;
-            animation-delay: 1s;
+        .sparkle3 {
+            bottom: 90px;
+            left: 90px;
+            font-size: 18px;
+            animation-delay: 0.9s;
         }
 
-        .sparkle-four {
-            right: 17%;
-            bottom: 25%;
-            animation-delay: 1.4s;
+        .sparkle4 {
+            bottom: 100px;
+            right: 90px;
+            font-size: 20px;
+            animation-delay: 1.2s;
         }
 
-        @keyframes twinkle {
+        @keyframes sparkleGlow {
             from {
-                opacity: 0.2;
-                transform: scale(0.7);
+                opacity: 0.25;
+                transform: scale(0.7) rotate(0deg);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1.2);
+                transform: scale(1.3) rotate(15deg);
             }
+        }
+
+
+        /* HANGING HEART DECORATION */
+
+        .hanging-hearts {
+            position: absolute;
+            top: 45px;
+            right: 22px;
+            color: #eba0b4;
+            font-size: 16px;
+            line-height: 25px;
+            pointer-events: none;
+            animation: hangingMove 3s ease-in-out infinite;
+        }
+
+        @keyframes hangingMove {
+            0%, 100% {
+                transform: rotate(-2deg);
+            }
+
+            50% {
+                transform: rotate(3deg);
+            }
+        }
+
+
+        /* CORNER HEART OUTLINES */
+
+        .corner-heart-left {
+            position: absolute;
+            bottom: 15px;
+            left: 18px;
+            color: #e79aad;
+            font-size: 42px;
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
+
+        .corner-heart-right {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #e79aad;
+            font-size: 38px;
+            transform: rotate(10deg);
+            pointer-events: none;
+        }
+
+
+        /* Keep your actual information above decorations */
+
+        .content {
+            position: relative;
+            z-index: 2;
         }
 
     </style>
 </head>
 
+
 <body>
-
-
-    <!-- FAIRY LIGHTS -->
-
-    <div class="fairy-lights">
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-        <span class="bulb"></span>
-    </div>
-
-
-    <!-- HEARTS -->
-
-    <div class="cute-heart heart-one">♡</div>
-    <div class="cute-heart heart-two">♥</div>
-    <div class="cute-heart heart-three">♡</div>
-    <div class="cute-heart heart-four">♥</div>
-
-
-    <!-- BUTTERFLIES -->
-
-    <div class="cute-butterfly butterfly-one">🦋</div>
-    <div class="cute-butterfly butterfly-two">🦋</div>
-
-
-    <!-- SPARKLES -->
-
-    <div class="cute-sparkle sparkle-one">✦</div>
-    <div class="cute-sparkle sparkle-two">✧</div>
-    <div class="cute-sparkle sparkle-three">✦</div>
-    <div class="cute-sparkle sparkle-four">✧</div>
-
-
-    <!-- YOUR ORIGINAL CONTENT -->
 
     <div class="container">
 
-        <h1>Yasmeen Mohamed</h1>
 
-        <h2>IE 203 - Fall 2026</h2>
+        <!-- ============================== -->
+        <!-- NEW GIRLY DECORATIONS          -->
+        <!-- ============================== -->
 
-        <div class="company-name">Yasso Green Inc</div>
 
-        <h2>My Assignments</h2>
+        <div class="pink-border"></div>
 
-        <a href="assignment1.html">Assignment 1</a>
-        <a href="#">Assignment 2</a>
-        <a href="#">Assignment 3</a>
+
+        <!-- FAIRY LIGHTS -->
+
+        <div class="fairy-lights">
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+        </div>
+
+
+        <!-- BOWS -->
+
+        <div class="bow bow-left">🎀</div>
+        <div class="bow bow-right">🎀</div>
+
+
+        <!-- BUTTERFLIES -->
+
+        <div class="butterfly butterfly-left">🦋</div>
+        <div class="butterfly butterfly-right">🦋</div>
+
+
+        <!-- HEARTS -->
+
+        <div class="heart heart1">♥</div>
+        <div class="heart heart2">♡</div>
+        <div class="heart heart3">♡</div>
+        <div class="heart heart4">♥</div>
+        <div class="heart heart5">♥</div>
+        <div class="heart heart6">♡</div>
+
+
+        <!-- SPARKLES -->
+
+        <div class="sparkle sparkle1">✦</div>
+        <div class="sparkle sparkle2">✧</div>
+        <div class="sparkle sparkle3">✦</div>
+        <div class="sparkle sparkle4">✧</div>
+
+
+        <!-- HANGING HEARTS -->
+
+        <div class="hanging-hearts">
+            │<br>
+            ♡<br>
+            │<br>
+            ♥
+        </div>
+
+
+        <!-- CORNER HEARTS -->
+
+        <div class="corner-heart-left">♡</div>
+        <div class="corner-heart-right">♡</div>
+
+
+
+        <!-- ================================= -->
+        <!-- YOUR ORIGINAL INFORMATION         -->
+        <!-- NOTHING HERE HAS BEEN CHANGED      -->
+        <!-- ================================= -->
+
+        <div class="content">
+
+            <h1>Yasmeen Mohamed</h1>
+
+            <h2>IE 203 - Fall 2026</h2>
+
+            <div class="company-name">Yasso Green Inc</div>
+
+            <h2>My Assignments</h2>
+
+            <a href="assignment1.html">Assignment 1</a>
+            <a href="#">Assignment 2</a>
+            <a href="#">Assignment 3</a>
+
+        </div>
 
     </div>
 
