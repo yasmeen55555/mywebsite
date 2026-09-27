@@ -5,9 +5,9 @@
 
     <style>
 
-        /* ========================================= */
-        /* YOUR ORIGINAL PAGE                       */
-        /* ========================================= */
+        /* ============================= */
+        /* YOUR ORIGINAL PAGE            */
+        /* ============================= */
 
         body {
             background-color: #fff5f8;
@@ -38,8 +38,6 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-
-            /* For decorations */
             position: relative;
             overflow: hidden;
         }
@@ -60,9 +58,9 @@
         }
 
 
-        /* ========================================= */
-        /* PINK BORDER                               */
-        /* ========================================= */
+        /* ============================= */
+        /* PINK BORDER                   */
+        /* ============================= */
 
         .pink-border {
             position: absolute;
@@ -76,9 +74,9 @@
         }
 
 
-        /* ========================================= */
-        /* FAIRY LIGHTS                              */
-        /* ========================================= */
+        /* ============================= */
+        /* TOP FAIRY LIGHTS              */
+        /* ============================= */
 
         .fairy-lights {
             position: absolute;
@@ -95,17 +93,15 @@
             height: 7px;
             background-color: #f5a9bd;
             border-radius: 50%;
-
             box-shadow:
                 0 0 5px #f5a9bd,
                 0 0 10px #ffd5df,
                 0 0 15px #fff0f5;
-
             animation: glow 1.5s infinite alternate;
         }
 
         .bulb:nth-child(even) {
-            animation-delay: 0.7s;
+            animation-delay: .7s;
         }
 
         .bulb:nth-child(3n) {
@@ -113,10 +109,9 @@
         }
 
         @keyframes glow {
-
             from {
-                opacity: 0.3;
-                transform: scale(0.8);
+                opacity: .3;
+                transform: scale(.8);
             }
 
             to {
@@ -126,9 +121,9 @@
         }
 
 
-        /* ========================================= */
-        /* SIDE LIGHTS                               */
-        /* ========================================= */
+        /* ============================= */
+        /* SIDE LIGHTS                   */
+        /* ============================= */
 
         .side-light {
             position: absolute;
@@ -136,60 +131,30 @@
             height: 7px;
             background-color: #ffc1d1;
             border-radius: 50%;
-
             box-shadow:
                 0 0 6px #f7a9bd,
                 0 0 12px #ffd5df;
-
             animation: glow 1.5s infinite alternate;
             pointer-events: none;
         }
 
-        .light1 {
-            left: 20px;
-            top: 28%;
-        }
+        .light1 { left: 20px; top: 28%; }
+        .light2 { left: 20px; top: 50%; animation-delay: .5s; }
+        .light3 { left: 20px; top: 72%; animation-delay: 1s; }
 
-        .light2 {
-            left: 20px;
-            top: 50%;
-            animation-delay: .5s;
-        }
-
-        .light3 {
-            left: 20px;
-            top: 72%;
-            animation-delay: 1s;
-        }
-
-        .light4 {
-            right: 20px;
-            top: 28%;
-            animation-delay: .3s;
-        }
-
-        .light5 {
-            right: 20px;
-            top: 50%;
-            animation-delay: .8s;
-        }
-
-        .light6 {
-            right: 20px;
-            top: 72%;
-            animation-delay: 1.2s;
-        }
+        .light4 { right: 20px; top: 28%; animation-delay: .3s; }
+        .light5 { right: 20px; top: 50%; animation-delay: .8s; }
+        .light6 { right: 20px; top: 72%; animation-delay: 1.2s; }
 
 
-        /* ========================================= */
-        /* BOWS                                      */
-        /* ========================================= */
+        /* ============================= */
+        /* BOWS                          */
+        /* ============================= */
 
         .bow {
             position: absolute;
             pointer-events: none;
             z-index: 1;
-
             animation: bowFloat 4s ease-in-out infinite;
         }
 
@@ -234,8 +199,38 @@
             animation-delay: 1.5s;
         }
 
-        @keyframes bowFloat {
 
+        /* NEW BIG PINK BOWS */
+
+        .bow7 {
+            top: 18%;
+            left: 15%;
+            font-size: 35px;
+            animation-delay: .8s;
+        }
+
+        .bow8 {
+            top: 18%;
+            right: 15%;
+            font-size: 35px;
+            animation-delay: 1.3s;
+        }
+
+        .bow9 {
+            bottom: 15%;
+            left: 15%;
+            font-size: 34px;
+            animation-delay: 1.8s;
+        }
+
+        .bow10 {
+            bottom: 15%;
+            right: 15%;
+            font-size: 34px;
+            animation-delay: .4s;
+        }
+
+        @keyframes bowFloat {
             0%, 100% {
                 transform: translateY(0) rotate(-5deg);
             }
@@ -246,15 +241,14 @@
         }
 
 
-        /* ========================================= */
-        /* BUTTERFLIES                               */
-        /* ========================================= */
+        /* ============================= */
+        /* BUTTERFLIES                   */
+        /* ============================= */
 
         .butterfly {
             position: absolute;
             pointer-events: none;
             z-index: 1;
-
             animation: butterflyFloat 4s ease-in-out infinite;
         }
 
@@ -286,7 +280,6 @@
         }
 
         @keyframes butterflyFloat {
-
             0%, 100% {
                 transform: translate(0,0) rotate(-8deg);
             }
@@ -297,131 +290,110 @@
         }
 
 
-        /* ========================================= */
-        /* HEARTS                                    */
-        /* ========================================= */
+        /* ============================= */
+        /* SMALL HEARTS                  */
+        /* ============================= */
 
         .heart {
             position: absolute;
             color: #ee9fb5;
             pointer-events: none;
             z-index: 1;
-
             animation: heartFloat 3s ease-in-out infinite;
         }
 
-        .heart1 {
-            top: 75px;
-            left: 35px;
-            font-size: 22px;
+        .heart1 { top: 75px; left: 35px; font-size: 22px; }
+        .heart2 { top: 75px; right: 40px; font-size: 24px; animation-delay: .5s; }
+
+        .heart3 { top: 120px; left: 90px; font-size: 16px; animation-delay: 1s; }
+        .heart4 { top: 120px; right: 90px; font-size: 18px; animation-delay: 1.5s; }
+
+        .heart5 { top: 42%; left: 25px; font-size: 20px; animation-delay: .3s; }
+        .heart6 { top: 42%; right: 25px; font-size: 22px; animation-delay: .8s; }
+
+        .heart7 { top: 65%; left: 55px; font-size: 16px; animation-delay: 1.2s; }
+        .heart8 { top: 65%; right: 55px; font-size: 18px; animation-delay: 1.7s; }
+
+        .heart9 { bottom: 40px; left: 95px; font-size: 24px; animation-delay: .6s; }
+        .heart10 { bottom: 40px; right: 95px; font-size: 22px; animation-delay: 1.1s; }
+
+        .heart11 { bottom: 75px; left: 45px; font-size: 15px; animation-delay: 1.5s; }
+        .heart12 { bottom: 75px; right: 45px; font-size: 15px; animation-delay: .4s; }
+
+        .heart13 { top: 20px; left: 28%; font-size: 15px; }
+        .heart14 { top: 20px; right: 28%; font-size: 15px; animation-delay: .7s; }
+
+        .heart15 { bottom: 18px; left: 40%; font-size: 17px; animation-delay: 1.2s; }
+        .heart16 { bottom: 18px; right: 40%; font-size: 17px; animation-delay: 1.7s; }
+
+
+        /* ============================= */
+        /* NEW BIG PINK HEARTS           */
+        /* ============================= */
+
+        .big-heart {
+            position: absolute;
+            color: #f1a6bb;
+            pointer-events: none;
+            z-index: 1;
+            opacity: .8;
+            animation: bigHeartFloat 4s ease-in-out infinite;
+            text-shadow: 0 0 8px #ffe0e8;
         }
 
-        .heart2 {
-            top: 75px;
-            right: 40px;
-            font-size: 24px;
-            animation-delay: .5s;
+        .big-heart1 {
+            left: 17%;
+            top: 32%;
+            font-size: 45px;
         }
 
-        .heart3 {
-            top: 120px;
-            left: 90px;
-            font-size: 16px;
-            animation-delay: 1s;
-        }
-
-        .heart4 {
-            top: 120px;
-            right: 90px;
-            font-size: 18px;
-            animation-delay: 1.5s;
-        }
-
-        .heart5 {
-            top: 42%;
-            left: 25px;
-            font-size: 20px;
-            animation-delay: .3s;
-        }
-
-        .heart6 {
-            top: 42%;
-            right: 25px;
-            font-size: 22px;
+        .big-heart2 {
+            right: 17%;
+            top: 35%;
+            font-size: 42px;
             animation-delay: .8s;
         }
 
-        .heart7 {
-            top: 65%;
-            left: 55px;
-            font-size: 16px;
-            animation-delay: 1.2s;
+        .big-heart3 {
+            left: 20%;
+            bottom: 17%;
+            font-size: 38px;
+            animation-delay: 1.3s;
         }
 
-        .heart8 {
-            top: 65%;
-            right: 55px;
-            font-size: 18px;
-            animation-delay: 1.7s;
+        .big-heart4 {
+            right: 20%;
+            bottom: 17%;
+            font-size: 40px;
+            animation-delay: 1.8s;
         }
 
-        .heart9 {
-            bottom: 40px;
-            left: 95px;
-            font-size: 24px;
-            animation-delay: .6s;
-        }
-
-        .heart10 {
-            bottom: 40px;
-            right: 95px;
-            font-size: 22px;
-            animation-delay: 1.1s;
-        }
-
-        .heart11 {
-            bottom: 75px;
-            left: 45px;
-            font-size: 15px;
-            animation-delay: 1.5s;
-        }
-
-        .heart12 {
-            bottom: 75px;
-            right: 45px;
-            font-size: 15px;
+        .big-heart5 {
+            left: 9%;
+            top: 57%;
+            font-size: 33px;
             animation-delay: .4s;
         }
 
-        .heart13 {
-            top: 20px;
-            left: 28%;
-            font-size: 15px;
+        .big-heart6 {
+            right: 9%;
+            top: 57%;
+            font-size: 33px;
+            animation-delay: 1.1s;
         }
 
-        .heart14 {
-            top: 20px;
-            right: 28%;
-            font-size: 15px;
-            animation-delay: .7s;
+        @keyframes bigHeartFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.08) rotate(5deg);
+            }
         }
 
-        .heart15 {
-            bottom: 18px;
-            left: 40%;
-            font-size: 17px;
-            animation-delay: 1.2s;
-        }
-
-        .heart16 {
-            bottom: 18px;
-            right: 40%;
-            font-size: 17px;
-            animation-delay: 1.7s;
-        }
 
         @keyframes heartFloat {
-
             0%, 100% {
                 transform: translateY(0) rotate(-5deg);
             }
@@ -432,76 +404,78 @@
         }
 
 
-        /* ========================================= */
-        /* SPARKLES                                  */
-        /* ========================================= */
+        /* ============================= */
+        /* HEART CLUSTERS                */
+        /* ============================= */
+
+        .heart-cluster {
+            position: absolute;
+            color: #efadc0;
+            pointer-events: none;
+            z-index: 1;
+            line-height: 1.3;
+            animation: heartFloat 4s ease-in-out infinite;
+        }
+
+        .cluster1 {
+            left: 27%;
+            top: 20%;
+            font-size: 16px;
+        }
+
+        .cluster2 {
+            right: 27%;
+            top: 22%;
+            font-size: 16px;
+            animation-delay: .8s;
+        }
+
+        .cluster3 {
+            left: 27%;
+            bottom: 10%;
+            font-size: 15px;
+            animation-delay: 1.4s;
+        }
+
+        .cluster4 {
+            right: 27%;
+            bottom: 10%;
+            font-size: 15px;
+            animation-delay: .5s;
+        }
+
+
+        /* ============================= */
+        /* SPARKLES                      */
+        /* ============================= */
 
         .sparkle {
             position: absolute;
             color: #e8a0b5;
             pointer-events: none;
             z-index: 1;
-
             animation: sparkleGlow 1.5s infinite alternate;
         }
 
-        .sparkle1 {
-            top: 100px;
-            left: 55px;
-            font-size: 18px;
-        }
+        .sparkle1 { top: 100px; left: 55px; font-size: 18px; }
+        .sparkle2 { top: 105px; right: 60px; font-size: 20px; animation-delay: .5s; }
 
-        .sparkle2 {
-            top: 105px;
-            right: 60px;
-            font-size: 20px;
-            animation-delay: .5s;
-        }
+        .sparkle3 { top: 38%; left: 100px; font-size: 15px; animation-delay: .8s; }
+        .sparkle4 { top: 38%; right: 100px; font-size: 17px; animation-delay: 1.1s; }
 
-        .sparkle3 {
-            top: 38%;
-            left: 100px;
-            font-size: 15px;
-            animation-delay: .8s;
-        }
+        .sparkle5 { bottom: 100px; left: 60px; font-size: 20px; animation-delay: .3s; }
+        .sparkle6 { bottom: 100px; right: 60px; font-size: 18px; animation-delay: .9s; }
 
-        .sparkle4 {
-            top: 38%;
-            right: 100px;
-            font-size: 17px;
-            animation-delay: 1.1s;
-        }
+        .sparkle7 { bottom: 35px; left: 28%; font-size: 15px; animation-delay: 1.3s; }
+        .sparkle8 { bottom: 35px; right: 28%; font-size: 15px; animation-delay: .6s; }
 
-        .sparkle5 {
-            bottom: 100px;
-            left: 60px;
-            font-size: 20px;
-            animation-delay: .3s;
-        }
+        .sparkle9 { top: 25%; left: 22%; font-size: 20px; animation-delay: .4s; }
+        .sparkle10 { top: 25%; right: 22%; font-size: 20px; animation-delay: 1s; }
 
-        .sparkle6 {
-            bottom: 100px;
-            right: 60px;
-            font-size: 18px;
-            animation-delay: .9s;
-        }
-
-        .sparkle7 {
-            bottom: 35px;
-            left: 28%;
-            font-size: 15px;
-            animation-delay: 1.3s;
-        }
-
-        .sparkle8 {
-            bottom: 35px;
-            right: 28%;
-            font-size: 15px;
-            animation-delay: .6s;
-        }
+        .sparkle11 { bottom: 28%; left: 24%; font-size: 17px; animation-delay: .7s; }
+        .sparkle12 { bottom: 28%; right: 24%; font-size: 17px; animation-delay: 1.4s; }
 
         @keyframes sparkleGlow {
-
             from {
                 opacity: .25;
                 transform: scale(.7) rotate(0deg);
@@ -514,21 +488,18 @@
         }
 
 
-        /* ========================================= */
-        /* HANGING HEARTS                            */
-        /* ========================================= */
+        /* ============================= */
+        /* HANGING HEARTS                */
+        /* ============================= */
 
         .hanging-hearts-left {
             position: absolute;
             top: 55px;
             left: 25px;
-
             color: #eaa0b4;
             font-size: 15px;
             line-height: 22px;
-
             pointer-events: none;
-
             animation: hangingMove 3s ease-in-out infinite;
         }
 
@@ -536,19 +507,15 @@
             position: absolute;
             top: 55px;
             right: 25px;
-
             color: #eaa0b4;
             font-size: 15px;
             line-height: 22px;
-
             pointer-events: none;
-
             animation: hangingMove 3s ease-in-out infinite;
             animation-delay: .7s;
         }
 
         @keyframes hangingMove {
-
             0%, 100% {
                 transform: rotate(-2deg);
             }
@@ -559,9 +526,9 @@
         }
 
 
-        /* ========================================= */
-        /* BIG CORNER HEARTS                         */
-        /* ========================================= */
+        /* ============================= */
+        /* BIG CORNER HEARTS             */
+        /* ============================= */
 
         .corner-heart {
             position: absolute;
@@ -585,9 +552,9 @@
         }
 
 
-        /* ========================================= */
-        /* KEEP YOUR CONTENT ON TOP                  */
-        /* ========================================= */
+        /* ============================= */
+        /* KEEP YOUR CONTENT ON TOP      */
+        /* ============================= */
 
         .content {
             position: relative;
@@ -600,150 +567,183 @@
 
 <body>
 
-    <div class="container">
+<div class="container">
+
+    <div class="pink-border"></div>
 
 
-        <!-- PINK BORDER -->
+    <!-- FAIRY LIGHTS -->
 
-        <div class="pink-border"></div>
+    <div class="fairy-lights">
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+        <span class="bulb"></span>
+    </div>
 
 
-        <!-- FAIRY LIGHTS -->
+    <!-- SIDE LIGHTS -->
 
-        <div class="fairy-lights">
+    <span class="side-light light1"></span>
+    <span class="side-light light2"></span>
+    <span class="side-light light3"></span>
 
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
-            <span class="bulb"></span>
+    <span class="side-light light4"></span>
+    <span class="side-light light5"></span>
+    <span class="side-light light6"></span>
 
+
+    <!-- BOWS -->
+
+    <div class="bow bow1">🎀</div>
+    <div class="bow bow2">🎀</div>
+    <div class="bow bow3">🎀</div>
+    <div class="bow bow4">🎀</div>
+    <div class="bow bow5">🎀</div>
+    <div class="bow bow6">🎀</div>
+
+    <div class="bow bow7">🎀</div>
+    <div class="bow bow8">🎀</div>
+    <div class="bow bow9">🎀</div>
+    <div class="bow bow10">🎀</div>
+
+
+    <!-- BUTTERFLIES -->
+
+    <div class="butterfly butterfly1">🦋</div>
+    <div class="butterfly butterfly2">🦋</div>
+    <div class="butterfly butterfly3">🦋</div>
+    <div class="butterfly butterfly4">🦋</div>
+
+
+    <!-- SMALL HEARTS -->
+
+    <div class="heart heart1">♥</div>
+    <div class="heart heart2">♡</div>
+    <div class="heart heart3">♡</div>
+    <div class="heart heart4">♥</div>
+
+    <div class="heart heart5">♡</div>
+    <div class="heart heart6">♥</div>
+    <div class="heart heart7">♥</div>
+    <div class="heart heart8">♡</div>
+
+    <div class="heart heart9">♡</div>
+    <div class="heart heart10">♥</div>
+    <div class="heart heart11">♥</div>
+    <div class="heart heart12">♡</div>
+
+    <div class="heart heart13">♥</div>
+    <div class="heart heart14">♡</div>
+    <div class="heart heart15">♡</div>
+    <div class="heart heart16">♥</div>
+
+
+    <!-- BIG PINK HEARTS -->
+
+    <div class="big-heart big-heart1">♥</div>
+    <div class="big-heart big-heart2">♡</div>
+    <div class="big-heart big-heart3">♡</div>
+    <div class="big-heart big-heart4">♥</div>
+    <div class="big-heart big-heart5">♥</div>
+    <div class="big-heart big-heart6">♡</div>
+
+
+    <!-- LITTLE HEART CLUSTERS -->
+
+    <div class="heart-cluster cluster1">
+        ♡ &nbsp; ♥<br>
+        &nbsp;&nbsp; ♡
+    </div>
+
+    <div class="heart-cluster cluster2">
+        ♥ &nbsp; ♡<br>
+        &nbsp;&nbsp; ♥
+    </div>
+
+    <div class="heart-cluster cluster3">
+        ♡ &nbsp; ♥ &nbsp; ♡
+    </div>
+
+    <div class="heart-cluster cluster4">
+        ♥ &nbsp; ♡ &nbsp; ♥
+    </div>
+
+
+    <!-- SPARKLES -->
+
+    <div class="sparkle sparkle1">✦</div>
+    <div class="sparkle sparkle2">✧</div>
+    <div class="sparkle sparkle3">✦</div>
+    <div class="sparkle sparkle4">✧</div>
+
+    <div class="sparkle sparkle5">✦</div>
+    <div class="sparkle sparkle6">✧</div>
+    <div class="sparkle sparkle7">✦</div>
+    <div class="sparkle sparkle8">✧</div>
+
+    <div class="sparkle sparkle9">✦</div>
+    <div class="sparkle sparkle10">✧</div>
+    <div class="sparkle sparkle11">✦</div>
+    <div class="sparkle sparkle12">✧</div>
+
+
+    <!-- HANGING HEARTS -->
+
+    <div class="hanging-hearts-left">
+        │<br>
+        ♡<br>
+        │<br>
+        ♥
+    </div>
+
+    <div class="hanging-hearts-right">
+        │<br>
+        ♥<br>
+        │<br>
+        ♡
+    </div>
+
+
+    <!-- CORNER HEARTS -->
+
+    <div class="corner-heart corner-heart1">♡</div>
+    <div class="corner-heart corner-heart2">♡</div>
+
+
+    <!-- ===================================== -->
+    <!-- YOUR ORIGINAL CONTENT - UNCHANGED     -->
+    <!-- ===================================== -->
+
+    <div class="content">
+
+        <h1>Yasmeen Mohamed</h1>
+
+        <h2>IE 203 - Fall 2026</h2>
+
+        <div class="company-name">
+            Yasso Green Inc
         </div>
 
+        <h2>My Assignments</h2>
 
-        <!-- SIDE LIGHTS -->
-
-        <span class="side-light light1"></span>
-        <span class="side-light light2"></span>
-        <span class="side-light light3"></span>
-
-        <span class="side-light light4"></span>
-        <span class="side-light light5"></span>
-        <span class="side-light light6"></span>
-
-
-        <!-- BOWS -->
-
-        <div class="bow bow1">🎀</div>
-        <div class="bow bow2">🎀</div>
-        <div class="bow bow3">🎀</div>
-        <div class="bow bow4">🎀</div>
-        <div class="bow bow5">🎀</div>
-        <div class="bow bow6">🎀</div>
-
-
-        <!-- BUTTERFLIES -->
-
-        <div class="butterfly butterfly1">🦋</div>
-        <div class="butterfly butterfly2">🦋</div>
-        <div class="butterfly butterfly3">🦋</div>
-        <div class="butterfly butterfly4">🦋</div>
-
-
-        <!-- HEARTS -->
-
-        <div class="heart heart1">♥</div>
-        <div class="heart heart2">♡</div>
-        <div class="heart heart3">♡</div>
-        <div class="heart heart4">♥</div>
-
-        <div class="heart heart5">♡</div>
-        <div class="heart heart6">♥</div>
-        <div class="heart heart7">♥</div>
-        <div class="heart heart8">♡</div>
-
-        <div class="heart heart9">♡</div>
-        <div class="heart heart10">♥</div>
-        <div class="heart heart11">♥</div>
-        <div class="heart heart12">♡</div>
-
-        <div class="heart heart13">♥</div>
-        <div class="heart heart14">♡</div>
-        <div class="heart heart15">♡</div>
-        <div class="heart heart16">♥</div>
-
-
-        <!-- SPARKLES -->
-
-        <div class="sparkle sparkle1">✦</div>
-        <div class="sparkle sparkle2">✧</div>
-        <div class="sparkle sparkle3">✦</div>
-        <div class="sparkle sparkle4">✧</div>
-
-        <div class="sparkle sparkle5">✦</div>
-        <div class="sparkle sparkle6">✧</div>
-        <div class="sparkle sparkle7">✦</div>
-        <div class="sparkle sparkle8">✧</div>
-
-
-        <!-- HANGING HEARTS -->
-
-        <div class="hanging-hearts-left">
-            │<br>
-            ♡<br>
-            │<br>
-            ♥
-        </div>
-
-        <div class="hanging-hearts-right">
-            │<br>
-            ♥<br>
-            │<br>
-            ♡
-        </div>
-
-
-        <!-- BIG CORNER HEARTS -->
-
-        <div class="corner-heart corner-heart1">♡</div>
-        <div class="corner-heart corner-heart2">♡</div>
-
-
-
-        <!-- ===================================== -->
-        <!-- YOUR ORIGINAL CONTENT                 -->
-        <!-- ===================================== -->
-
-        <div class="content">
-
-            <h1>Yasmeen Mohamed</h1>
-
-            <h2>IE 203 - Fall 2026</h2>
-
-            <div class="company-name">
-                Yasso Green Inc
-            </div>
-
-            <h2>My Assignments</h2>
-
-            <a href="assignment1.html">Assignment 1</a>
-
-            <a href="#">Assignment 2</a>
-
-            <a href="#">Assignment 3</a>
-
-        </div>
+        <a href="assignment1.html">Assignment 1</a>
+        <a href="#">Assignment 2</a>
+        <a href="#">Assignment 3</a>
 
     </div>
+
+</div>
 
 </body>
 </html>
