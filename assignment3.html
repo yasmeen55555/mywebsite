@@ -1,1 +1,742 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 3 - IE 203</title>
+
+<style>
+/* SAME PINK DESIGN AS ASSIGNMENT 1 */
+body {
+    background-color: #fff5f8;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+.container {
+    background: white;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.1),
+        0 0 18px rgba(255,180,200,.45),
+        0 0 38px rgba(255,210,225,.3);
+    animation: pageOpen 1.2s ease-out,
+               outsideGlow 3s ease-in-out 1.2s infinite alternate;
+}
+h1 {
+    text-align: center;
+    color: #b76e79;
+    margin-bottom: 30px;
+}
+h2 {
+    color: #b76e79;
+    margin-top: 35px;
+}
+h3 { color: #6d4c55; }
+p, li { line-height: 1.7; }
+
+.back {
+    display: inline-block;
+    background: #f7d6df;
+    color: #6d4c55;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.back:hover { background: #efbdca; }
+
+.article-link {
+    color: #b76e79;
+    text-decoration: underline;
+}
+.article-link:hover { color: #8f4f5b; }
+
+/* OPENING AND GLOW ANIMATIONS */
+@keyframes pageOpen {
+    0% {
+        opacity: 0;
+        transform: scale(.96);
+        box-shadow: 0 0 0 rgba(255,182,193,0);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.01);
+        box-shadow:
+            0 0 30px rgba(255,170,195,.65),
+            0 0 55px rgba(255,210,225,.4);
+    }
+    100% { transform: scale(1); }
+}
+@keyframes outsideGlow {
+    from {
+        box-shadow:
+            0 4px 12px rgba(0,0,0,.1),
+            0 0 12px rgba(255,180,200,.3),
+            0 0 25px rgba(255,210,225,.2);
+    }
+    to {
+        box-shadow:
+            0 4px 12px rgba(0,0,0,.1),
+            0 0 24px rgba(255,155,190,.6),
+            0 0 48px rgba(255,200,220,.4);
+    }
+}
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border-radius: 13px;
+    pointer-events: none;
+    z-index: 3;
+    animation: innerGlow 2.5s ease-in-out infinite alternate;
+}
+@keyframes innerGlow {
+    from {
+        box-shadow:
+            inset 0 0 8px rgba(255,180,200,.3),
+            inset 0 0 18px rgba(255,215,225,.2);
+    }
+    to {
+        box-shadow:
+            inset 0 0 18px rgba(255,150,185,.65),
+            inset 0 0 35px rgba(255,205,220,.45);
+    }
+}
+.girly-border {
+    position: absolute;
+    inset: 12px;
+    border: 2px solid #f7ccd8;
+    border-radius: 13px;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow:
+        0 0 7px rgba(255,175,200,.5),
+        inset 0 0 7px rgba(255,200,215,.35);
+}
+
+/* FAIRY LIGHTS */
+.fairy-lights {
+    position: absolute;
+    top: 15px;
+    left: 8%;
+    width: 84%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    z-index: 4;
+}
+.bulb {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f5a9bd;
+    box-shadow:
+        0 0 5px #f5a9bd,
+        0 0 12px #ffc6d5,
+        0 0 20px #ffe6ed;
+    animation: lightGlow 1.4s infinite alternate;
+}
+.bulb:nth-child(even) { animation-delay: .5s; }
+.bulb:nth-child(3n) { animation-delay: 1s; }
+@keyframes lightGlow {
+    from { opacity: .25; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+
+/* BOWS, BUTTERFLIES, FLOWERS, HEARTS */
+.decoration {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+.bow {
+    font-size: 38px;
+    animation: bowFloat 4s ease-in-out infinite;
+}
+.bow1 { top:30px; left:25px; }
+.bow2 { top:30px; right:25px; animation-delay:.8s; }
+.bow3 { top:520px; left:30px; font-size:31px; }
+.bow4 { top:850px; right:30px; font-size:34px; }
+.bow5 { top:1200px; left:28px; font-size:30px; }
+.bow6 { top:1500px; right:28px; font-size:34px; }
+@keyframes bowFloat {
+    0%,100% { transform:translateY(0) rotate(-5deg); }
+    50% { transform:translateY(-8px) rotate(5deg); }
+}
+.butterfly {
+    font-size: 30px;
+    animation: butterflyFly 5s ease-in-out infinite;
+}
+.butterfly1 { top:160px; left:35px; }
+.butterfly2 { top:340px; right:35px; animation-delay:1s; }
+.butterfly3 { top:700px; left:30px; font-size:25px; }
+.butterfly4 { top:1080px; right:35px; font-size:27px; }
+.butterfly5 { top:1380px; left:35px; font-size:25px; }
+@keyframes butterflyFly {
+    0%,100% { transform:translate(0,0) rotate(-8deg); }
+    50% { transform:translate(12px,-15px) rotate(8deg); }
+}
+.flower {
+    font-size: 28px;
+    animation: flowerFloat 4s ease-in-out infinite;
+}
+.flower1 { top:240px; left:30px; }
+.flower2 { top:610px; right:30px; }
+.flower3 { top:940px; left:30px; }
+.flower4 { top:1280px; right:30px; }
+.flower5 { top:1600px; left:30px; }
+@keyframes flowerFloat {
+    0%,100% { transform:rotate(-5deg) scale(1); }
+    50% { transform:rotate(7deg) scale(1.1); }
+}
+.heart {
+    color: #efa1b7;
+    text-shadow: 0 0 8px #ffd8e3;
+    animation: heartFloat 3.5s ease-in-out infinite;
+}
+.heart1 { top:100px; left:100px; font-size:25px; }
+.heart2 { top:180px; right:90px; font-size:34px; }
+.heart3 { top:430px; left:28px; font-size:32px; }
+.heart4 { top:540px; right:25px; font-size:24px; }
+.heart5 { top:760px; right:35px; font-size:37px; }
+.heart6 { top:860px; left:35px; font-size:26px; }
+.heart7 { top:1050px; left:28px; font-size:38px; }
+.heart8 { top:1180px; right:30px; font-size:29px; }
+.heart9 { top:1350px; left:28px; font-size:24px; }
+.heart10 { top:1480px; right:28px; font-size:38px; }
+.heart11 { top:1650px; left:40px; font-size:30px; }
+.heart12 { top:1780px; right:35px; font-size:26px; }
+@keyframes heartFloat {
+    0%,100% { transform:translateY(0) rotate(-5deg); }
+    50% { transform:translateY(-10px) rotate(5deg); }
+}
+
+/* SPARKLES AND GLITTER */
+.sparkle {
+    color: #eaa0b6;
+    animation: glitter 1.3s infinite alternate;
+}
+.sparkle1 { top:90px; right:150px; font-size:20px; }
+.sparkle2 { top:280px; left:100px; font-size:17px; }
+.sparkle3 { top:480px; right:100px; font-size:21px; }
+.sparkle4 { top:680px; left:90px; font-size:18px; }
+.sparkle5 { top:900px; right:90px; font-size:22px; }
+.sparkle6 { top:1120px; left:90px; font-size:19px; }
+.sparkle7 { top:1320px; right:100px; font-size:21px; }
+.sparkle8 { top:1550px; left:100px; font-size:20px; }
+.sparkle9 { top:1750px; right:100px; font-size:19px; }
+@keyframes glitter {
+    from { opacity:.15; transform:scale(.5) rotate(0); }
+    to { opacity:1; transform:scale(1.4) rotate(25deg); }
+}
+.glitter-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f7b5c7;
+    box-shadow: 0 0 10px #f5a9bd;
+    pointer-events: none;
+    z-index: 1;
+    animation: glitterDot 2s infinite alternate;
+}
+.dot1 { top:200px; left:15%; }
+.dot2 { top:350px; right:14%; }
+.dot3 { top:600px; left:12%; }
+.dot4 { top:800px; right:13%; }
+.dot5 { top:1050px; left:15%; }
+.dot6 { top:1250px; right:15%; }
+.dot7 { top:1450px; left:13%; }
+.dot8 { top:1700px; right:13%; }
+@keyframes glitterDot {
+    from { opacity:.2; transform:scale(.6); }
+    to { opacity:1; transform:scale(1.5); }
+}
+
+/* FALLING HEARTS ON OPENING */
+.heart-rain {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1000;
+}
+.falling-heart {
+    position: absolute;
+    top: -50px;
+    color: #f19db6;
+    opacity: 0;
+    text-shadow:
+        0 0 5px #ffb9ce,
+        0 0 10px #ffd2df,
+        0 0 18px #ffeaf0;
+    animation: heartFall 5.5s ease-in forwards;
+}
+.falling-heart:nth-child(1) { left:3%; font-size:17px; }
+.falling-heart:nth-child(2) { left:9%; font-size:24px; animation-delay:.4s; }
+.falling-heart:nth-child(3) { left:15%; font-size:14px; animation-delay:1s; }
+.falling-heart:nth-child(4) { left:21%; font-size:20px; animation-delay:.2s; }
+.falling-heart:nth-child(5) { left:27%; font-size:16px; animation-delay:1.4s; }
+.falling-heart:nth-child(6) { left:33%; font-size:25px; animation-delay:.7s; }
+.falling-heart:nth-child(7) { left:39%; font-size:18px; animation-delay:1.7s; }
+.falling-heart:nth-child(8) { left:45%; font-size:22px; animation-delay:.3s; }
+.falling-heart:nth-child(9) { left:51%; font-size:15px; animation-delay:1.1s; }
+.falling-heart:nth-child(10) { left:57%; font-size:26px; animation-delay:.5s; }
+.falling-heart:nth-child(11) { left:63%; font-size:17px; animation-delay:1.8s; }
+.falling-heart:nth-child(12) { left:69%; font-size:22px; animation-delay:.9s; }
+.falling-heart:nth-child(13) { left:75%; font-size:15px; animation-delay:1.3s; }
+.falling-heart:nth-child(14) { left:81%; font-size:25px; animation-delay:.2s; }
+.falling-heart:nth-child(15) { left:87%; font-size:18px; animation-delay:1.6s; }
+.falling-heart:nth-child(16) { left:93%; font-size:22px; animation-delay:.6s; }
+.falling-heart:nth-child(17) { left:12%; font-size:15px; animation-delay:2.1s; }
+.falling-heart:nth-child(18) { left:25%; font-size:19px; animation-delay:2.4s; }
+.falling-heart:nth-child(19) { left:38%; font-size:14px; animation-delay:2s; }
+.falling-heart:nth-child(20) { left:50%; font-size:23px; animation-delay:2.5s; }
+.falling-heart:nth-child(21) { left:62%; font-size:16px; animation-delay:2.2s; }
+.falling-heart:nth-child(22) { left:74%; font-size:21px; animation-delay:2.6s; }
+.falling-heart:nth-child(23) { left:86%; font-size:15px; animation-delay:2.3s; }
+.falling-heart:nth-child(24) { left:97%; font-size:19px; animation-delay:1.9s; }
+@keyframes heartFall {
+    0% { top:-50px; opacity:0; transform:rotate(0); }
+    8% { opacity:.9; }
+    30% { transform:translateX(18px) rotate(90deg); }
+    55% { transform:translateX(-15px) rotate(180deg); }
+    80% { transform:translateX(15px) rotate(260deg); opacity:.8; }
+    100% { top:105vh; opacity:0; transform:translateX(-8px) rotate(360deg); }
+}
+
+/* ASSIGNMENT 3 CONTENT STYLING */
+.page-content { position:relative; z-index:5; }
+.report-intro {
+    background: #fff5f8;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+.report-section {
+    margin: 35px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f7d6df;
+}
+.report-section h2 {
+    background: #fff5f8;
+    border-left: 5px solid #e9a9be;
+    padding: 13px 16px;
+    border-radius: 8px;
+}
+.formula {
+    background: #fff5f8;
+    border: 1px solid #f7d6df;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+.source-info {
+    background: #fff8fa;
+    padding: 15px;
+    border-radius: 10px;
+}
+.figure-placeholder {
+    margin: 26px 0;
+    padding: 24px;
+    border: 2px dashed #e9b7c8;
+    border-radius: 15px;
+    background: #fff8fa;
+    text-align: center;
+}
+.figure-placeholder h3 {
+    color: #b76e79;
+    margin-top: 0;
+}
+.figure-status { color: #80646d; }
+@media(max-width:650px) {
+    body { padding:15px; }
+    .container { padding:20px; }
+    .bow { font-size:24px; }
+    .butterfly,.flower { font-size:20px; }
+    .heart { opacity:.55; }
+    .figure-placeholder { padding:14px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FALLING HEARTS -->
+<div class="heart-rain">
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+    <span class="falling-heart">♥</span>
+    <span class="falling-heart">♡</span>
+</div>
+
+<div class="container">
+
+<div class="girly-border"></div>
+
+<!-- FAIRY LIGHTS -->
+<div class="fairy-lights">
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+    <span class="bulb"></span>
+</div>
+
+<!-- BOWS -->
+<div class="decoration bow bow1">🎀</div>
+<div class="decoration bow bow2">🎀</div>
+<div class="decoration bow bow3">🎀</div>
+<div class="decoration bow bow4">🎀</div>
+<div class="decoration bow bow5">🎀</div>
+<div class="decoration bow bow6">🎀</div>
+
+<!-- BUTTERFLIES -->
+<div class="decoration butterfly butterfly1">🦋</div>
+<div class="decoration butterfly butterfly2">🦋</div>
+<div class="decoration butterfly butterfly3">🦋</div>
+<div class="decoration butterfly butterfly4">🦋</div>
+<div class="decoration butterfly butterfly5">🦋</div>
+
+<!-- FLOWERS -->
+<div class="decoration flower flower1">🌸</div>
+<div class="decoration flower flower2">🌷</div>
+<div class="decoration flower flower3">🌸</div>
+<div class="decoration flower flower4">🌷</div>
+<div class="decoration flower flower5">🌸</div>
+
+<!-- HEARTS -->
+<div class="decoration heart heart1">♥</div>
+<div class="decoration heart heart2">♡</div>
+<div class="decoration heart heart3">♡</div>
+<div class="decoration heart heart4">♥</div>
+<div class="decoration heart heart5">♥</div>
+<div class="decoration heart heart6">♡</div>
+<div class="decoration heart heart7">♥</div>
+<div class="decoration heart heart8">♡</div>
+<div class="decoration heart heart9">♥</div>
+<div class="decoration heart heart10">♡</div>
+<div class="decoration heart heart11">♥</div>
+<div class="decoration heart heart12">♡</div>
+
+<!-- SPARKLES -->
+<div class="decoration sparkle sparkle1">✦</div>
+<div class="decoration sparkle sparkle2">✧</div>
+<div class="decoration sparkle sparkle3">✦</div>
+<div class="decoration sparkle sparkle4">✧</div>
+<div class="decoration sparkle sparkle5">✦</div>
+<div class="decoration sparkle sparkle6">✧</div>
+<div class="decoration sparkle sparkle7">✦</div>
+<div class="decoration sparkle sparkle8">✧</div>
+<div class="decoration sparkle sparkle9">✦</div>
+
+<!-- GLITTER -->
+<span class="glitter-dot dot1"></span>
+<span class="glitter-dot dot2"></span>
+<span class="glitter-dot dot3"></span>
+<span class="glitter-dot dot4"></span>
+<span class="glitter-dot dot5"></span>
+<span class="glitter-dot dot6"></span>
+<span class="glitter-dot dot7"></span>
+<span class="glitter-dot dot8"></span>
+
+<div class="page-content">
+
+<a class="back" href="index.html">← Back to Assignments</a>
+
+<h1>Assignment 3</h1>
+
+<div class="report-intro">
+<h2>My Object-Oriented Process Model</h2>
+<p><strong>Developing a Networked Visual Lean &amp; Flexible Factory</strong></p>
+<p><strong>Yasso Green Inc.</strong></p>
+<p>Yasmeen Mohamed · IE 203 Computer Graphics · Fall 2026 · Professor Ranky</p>
+</div>
+
+<!-- A0 PROCESS -->
+<section class="report-section">
+<h2>One-Page Description of the A0 Process</h2>
+<h3>A0 – Developing a Networked Visual Lean &amp; Flexible Factory</h3>
+
+<p>My company, Yasso Green Inc., is planning to develop a networked, visual, lean, and flexible factory that produces reusable and refillable perfume bottles. Our main goal is to manufacture high-quality perfume bottles while reducing waste, saving materials, improving production efficiency, and protecting the environment.</p>
+
+<p>To achieve this goal, our factory will use an object-oriented process model. This means we will divide the entire manufacturing system into smaller processes, called objects. Each object will have a specific function, inputs, outputs, controls, and resources. All these processes will be connected through a digital network so that information can move easily between departments and collaborating companies.</p>
+
+<p>Our manufacturing system will include four main processes:</p>
+
+<h3>A1 – Product Design: Creating reusable perfume bottle designs using digital design software.</h3>
+<h3>A2 – Manufacturing: Producing glass bottles and refillable dispensing components.</h3>
+<h3>A3 – Quality Control: Inspecting bottles to make sure they meet safety and quality standards.</h3>
+<h3>A4 – Packaging and Shipping: Packaging finished bottles and delivering them to customers.</h3>
+
+<p>Yasso Green Inc. will also plan to work with several collaborating companies. Autodesk will support our digital design process, Verescence will support glass bottle manufacturing, Aptar Beauty will provide refillable pumps and dispensing technology, and Berlin Packaging will support packaging and distribution. These companies will share product specifications and production information through a connected digital system.</p>
+
+<p>Our factory will follow lean manufacturing principles to reduce unnecessary materials, production delays, and defects. For example, if a bottle fails a quality inspection, the system will record the problem and send feedback to the manufacturing process. This will help the factory identify problems and improve production.</p>
+
+<p>We will also use a simple production efficiency calculation:</p>
+
+<p class="formula">Defect Rate (%) = (Number of Defective Bottles ÷ Total Bottles Produced) × 100</p>
+
+<p>For example, if the factory produces 1,000 bottles and 25 are defective:</p>
+
+<p class="formula">Defect Rate = (25 ÷ 1,000) × 100 = 2.5%</p>
+
+<p>This information will help our company measure quality and identify opportunities for improvement.</p>
+
+<p>Our factory will also be flexible, meaning we can change bottle designs, sizes, or production quantities based on customer demand without redesigning the entire production system.</p>
+
+<p>Overall, our A0 process model will show how product design, manufacturing, quality control, packaging, and collaborating companies work together as one connected system. By using digital technology, lean manufacturing, and reusable packaging, Yasso Green Inc. aims to create an efficient and sustainable perfume bottle factory.</p>
+
+<div class="figure-placeholder">
+<h3>Figure 1. A0 – Networked Visual Lean &amp; Flexible Factory</h3>
+<p class="figure-status">Diagram will be added here.</p>
+</div>
+
+<p>Overall factory model showing inputs, controls, resources, outputs, and connected processes A1–A4.</p>
+
+<h3>A0 – Overall Factory Process Explanation</h3>
+<p>The A0 diagram shows how Yasso Green Inc. plans to operate its networked visual lean and flexible factory for reusable perfume bottles. The system connects four main processes: product design (A1), manufacturing (A2), quality control (A3), and packaging and shipping (A4). Each process receives inputs, follows quality and production controls, and uses resources such as employees, machines, software, and collaborating companies. All four processes share information through a digital network to reduce waste, improve communication, and make production more efficient.</p>
+</section>
+
+<!-- A1-A4 -->
+<section class="report-section">
+<h2>Detailed Factory Process Model (A1–A4)</h2>
+
+<h3>A1 – Product Design</h3>
+<p>The product design process focuses on creating reusable and refillable perfume bottles using Autodesk digital design software. Engineers will develop 3D models to determine the bottle's shape, size, materials, and refillable features. The design information will be shared with Verescence and Aptar Beauty to help plan glass bottle manufacturing and dispensing components. This digital connection will help reduce design mistakes and improve communication before production begins.</p>
+
+<h3>A2 – Manufacturing</h3>
+<p>The manufacturing process focuses on producing glass perfume bottles and assembling refillable components. Verescence will be a proposed manufacturing partner for glass bottles, while Aptar Beauty will support the dispensing and refillable systems. The factory will use production schedules and digital information from A1 to organize manufacturing and reduce unnecessary waste. Production data will be shared with the quality control process to help identify and correct manufacturing problems.</p>
+
+<h3>A3 – Quality Control</h3>
+<p>The quality control process checks whether finished perfume bottles meet the company's design and quality requirements. Employees will inspect bottle dimensions, glass defects, and the functionality of refillable pumps. Inspection results will be recorded in a digital system and shared with the manufacturing and design departments. This feedback will help the factory reduce defects, improve product quality, and prevent repeated production problems.</p>
+
+<h3>A4 – Packaging and Shipping</h3>
+<p>The packaging and shipping process prepares approved perfume bottles for delivery to customers. Berlin Packaging will be a proposed partner supporting packaging materials and distribution planning. The factory will use digital inventory information to track finished products and organize shipments. This connected process will help reduce packaging waste, avoid shipping mistakes, and improve delivery efficiency.</p>
+
+<h3>Integration of the Four Processes</h3>
+<p>All four processes will be connected through a shared digital information system. Product design information will move from A1 to A2, manufacturing results will move to A3, and approved products will move to A4. Quality feedback will also return to earlier processes when improvements are needed. This integration will help Yasso Green Inc. operate as a networked, visual, lean, and flexible factory.</p>
+
+<div class="figure-placeholder">
+<h3>Figure 2. A0 Decomposition – Connected Factory Processes (A1–A4)</h3>
+<p class="figure-status">Diagram will be added here.</p>
+</div>
+
+<p>Detailed information and material flows among product design, manufacturing, quality control, and packaging.</p>
+</section>
+
+<!-- A11-A12 -->
+<section class="report-section">
+<h2>Lower-Level Process Model – A11 and A12</h2>
+
+<div class="figure-placeholder">
+<h3>Figure 3. A1 Decomposition – Product Design (A11 and A12)</h3>
+<p class="figure-status">Diagram will be added here.</p>
+</div>
+
+<p>Bottle design and refillable system design, including design feedback and component integration.</p>
+
+<h3>A11 – Perfume Bottle Design and Material Selection</h3>
+<p>The A11 process focuses on designing the shape, size, and materials of reusable perfume bottles. Engineers will use Autodesk software to create 3D models and compare different design options. The design team will consider glass thickness, bottle weight, durability, and environmental impact when selecting materials. The final design specifications will be shared digitally with Verescence and Aptar Beauty to support manufacturing and component compatibility.</p>
+
+<h3>A12 – Refillable System Design and Integration</h3>
+<p>The A12 process focuses on designing the refillable pump, cap, and dispensing system for the perfume bottle. Engineers will use technical specifications from Aptar Beauty to select components that fit the bottle's neck and allow customers to refill it. The design team will check component dimensions, assembly requirements, and sealing performance before approving the design. Information from A11 and A12 will be combined into one complete product design and sent to A2 Manufacturing.</p>
+
+<h3>Integration Between A11 and A12</h3>
+<p>A11 and A12 work together to develop a complete reusable perfume bottle design. A11 provides bottle dimensions and material specifications, while A12 uses this information to design a compatible refillable dispensing system. If the pump does not fit the bottle correctly, A12 will send feedback to A11 so engineers can modify the design. This digital communication will help reduce manufacturing errors, save materials, and improve product quality.</p>
+</section>
+
+<!-- A111-A112 -->
+<section class="report-section">
+<h2>Detailed Process Model – A111 and A112</h2>
+
+<div class="figure-placeholder">
+<h3>Figure 4. A11 Decomposition – Bottle Design and Material Selection (A111 and A112)</h3>
+<p class="figure-status">Diagram will be added here.</p>
+</div>
+
+<p>Detailed bottle dimensions, material evaluation, shared specifications, and design feedback.</p>
+
+<h3>A111 – Bottle Shape and Dimension Design</h3>
+<p>The A111 process focuses on creating the shape and dimensions of the reusable perfume bottle. Engineers will use Autodesk software to develop a 3D model showing the bottle's height, width, neck opening, and glass thickness. The design will consider customer requirements, appearance, and compatibility with refillable components. The final dimensions and 3D drawings will be shared with A112 for material evaluation and A12 for refillable pump integration.</p>
+
+<h3>A112 – Material Selection and Sustainability Analysis</h3>
+<p>The A112 process focuses on selecting suitable materials for the reusable perfume bottle. Engineers will compare glass materials based on durability, weight, cost, recyclability, and manufacturing requirements. The company will work with Verescence as a proposed manufacturing partner to evaluate whether the selected materials are suitable for production. The results will be shared with A111 so the bottle design can be adjusted if the material does not meet the requirements.</p>
+
+<h3>Engineering Analysis</h3>
+<p>To evaluate the bottle design, Yasso Green Inc. will estimate the amount of material required for production.</p>
+
+<p class="formula">Material Utilization (%) = (Material Used in Finished Products ÷ Total Material Input) × 100</p>
+
+<p>For example, if 100 kg of glass enters production and 92 kg becomes finished bottles:</p>
+
+<p class="formula">Material Utilization = (92 ÷ 100) × 100 = 92%</p>
+
+<p>The remaining 8% represents material not incorporated into finished bottles. This calculation will help the company measure material efficiency and identify opportunities to reduce waste.</p>
+
+<h3>Integration Between A111 and A112</h3>
+<p>A111 and A112 will exchange information through the company's digital design system. A111 will provide bottle dimensions and 3D models, while A112 will provide material specifications and sustainability evaluation results. If a selected material requires a different glass thickness or bottle shape, engineers will update the design and repeat the evaluation. The approved results will be combined into the A11 product design and shared with A12 and A2 Manufacturing.</p>
+</section>
+
+<!-- ARTICLE 1 -->
+<section class="report-section">
+<h2>GE Aerospace Is Investing $225M to Modernize Research Center</h2>
+
+<p class="source-info">
+<strong>Source:</strong> Aerospace Manufacturing and Design<br>
+<strong>Author:</strong> Eric Brothers<br>
+<strong>Published:</strong> October 9, 2026<br>
+<strong>Article Link:</strong>
+<a class="article-link" href="https://www.aerospacemanufacturinganddesign.com/news/ge-aerospace-investing-225m-modernize-research-center/" target="_blank">Read Article</a>
+</p>
+
+<h3>Executive Summary</h3>
+<p>This article discusses how GE Aerospace is investing $225 million to modernize its research center in Niskayuna, New York. The company plans to improve its facilities and purchase advanced equipment to support technologies such as artificial intelligence, robotics, advanced materials, and manufacturing systems. The project is also receiving financial support from New York State and local government and is expected to create 75 new full-time jobs over five years. This investment shows how important technology and innovation are for improving manufacturing and preparing companies for the future.</p>
+
+<h3>Industrial Engineering Connection</h3>
+<p>From an Industrial Engineering perspective, this article demonstrates how modern technology can improve production systems and support long-term efficiency. Investing in equipment, automation, and research can help companies develop better manufacturing processes and reduce operational problems. It also shows the importance of collaboration between businesses, government agencies, and research organizations.</p>
+
+<h3>Discussion Points</h3>
+<p>One important topic for discussion is how investing in new technology can help manufacturing companies become more efficient and competitive. GE Aerospace's investment shows that upgrading equipment and research facilities is important for developing future products. Another interesting point is that modernization does not only involve machines but also requires skilled engineers, researchers, and employees. The article also raises the question of how companies can continue their current operations while introducing new technologies.</p>
+
+<h3>What I Learned</h3>
+<p>From this article, I learned that manufacturing improvement requires long-term planning, investment, and collaboration. I also learned that technologies such as artificial intelligence and robotics are becoming important parts of modern engineering systems. Another important lesson is that companies need to balance technological improvements with employee development and operational continuity.</p>
+
+<h3>Connection to Yasso Green Inc.</h3>
+<p>This article relates to my company, Yasso Green Inc., because our proposed perfume bottle factory will also depend on modern technology and connected manufacturing systems. We plan to use Autodesk software for digital product design, manufacturing equipment for bottle production, and digital quality monitoring to improve efficiency. Similar to GE Aerospace, our goal is to use technology and collaboration to create a more productive, flexible, and innovative manufacturing system.</p>
+</section>
+
+<!-- ARTICLE 2 -->
+<section class="report-section">
+<h2>Gripen E Produced in Brazil by Embraer Makes Maiden Flight</h2>
+
+<p class="source-info">
+<strong>Source:</strong> Aerospace Manufacturing and Design<br>
+<strong>Author:</strong> Eric Brothers<br>
+<strong>Published:</strong> October 8, 2026<br>
+<strong>Article Link:</strong>
+<a class="article-link" href="https://www.aerospacemanufacturinganddesign.com/news/" target="_blank">Read Article</a>
+</p>
+
+<h3>Executive Summary</h3>
+<p>This article explains how Embraer and Saab successfully completed the first flight of a Gripen E fighter aircraft manufactured in Brazil. The aircraft was produced at Embraer's facility in Gavião Peixoto, São Paulo, and tested to verify its main systems and flight performance. This achievement demonstrates the successful collaboration between Embraer, Saab, and the Brazilian Air Force. Through technology transfer, engineering cooperation, and manufacturing development, Brazil has gained the ability to produce, integrate, and test advanced fighter aircraft. The article also explains that the companies plan to expand their manufacturing partnership to support future aircraft production.</p>
+
+<h3>Industrial Engineering Connection</h3>
+<p>From an Industrial Engineering perspective, this article demonstrates the importance of systems integration, manufacturing collaboration, and quality testing. Producing an advanced aircraft requires different engineering teams, suppliers, and manufacturing processes to work together efficiently. The Gripen E program shows how technology transfer and shared engineering knowledge can improve manufacturing capabilities. It also highlights the importance of testing products before delivery to ensure they meet performance and safety requirements.</p>
+
+<h3>Discussion Points</h3>
+<p>One important topic for discussion is how collaboration between companies in different countries can improve manufacturing capabilities. The partnership between Saab and Embraer shows that sharing technology and engineering knowledge can help companies develop complex products. Another important point is the role of testing and quality control in manufacturing. The successful first flight demonstrates why companies must verify that different components and systems work together before delivering a finished product. The article also raises the question of how international partnerships can improve production flexibility and increase manufacturing capacity.</p>
+
+<h3>What I Learned</h3>
+<p>From this article, I learned that manufacturing complex products requires strong communication, teamwork, and coordination between different engineering departments. I also learned that technology transfer allows companies to develop new manufacturing skills and become more independent in production. Another important lesson is that testing and quality control are essential parts of the manufacturing process because they help identify problems before products reach customers.</p>
+
+<h3>Connection to Yasso Green Inc.</h3>
+<p>This article relates to my company, Yasso Green Inc., because our proposed perfume bottle factory will also depend on collaboration between different companies and manufacturing processes. Similar to the partnership between Saab and Embraer, Yasso Green Inc. plans to work with Verescence for glass bottle manufacturing, Aptar Beauty for refillable dispensing systems, and Autodesk for digital product design. Our factory will connect product design, manufacturing, quality control, and packaging through a shared digital system. The article demonstrates how strong collaboration and system integration can improve product quality, manufacturing efficiency, and production flexibility.</p>
+</section>
+
+<!-- ARTICLE 3 -->
+<section class="report-section">
+<h2>From Obsolescence to Optimization: How to Revitalize Critical Machine Tools to Achieve What Used to Be Impossible</h2>
+
+<p class="source-info">
+<strong>Source:</strong> Aerospace Manufacturing and Design<br>
+<strong>Author:</strong> Elizabeth Engler Modic<br>
+<strong>Published:</strong> October 7, 2026<br>
+<strong>Presented by:</strong> Fives and FANUC at IMTS 2026<br>
+<strong>Video Link:</strong>
+<a class="article-link" href="https://www.aerospacemanufacturinganddesign.com/fileuploads/media/2026/10/07/imts-2026-fives-machining-systems-inc-and-fanuc-america-from-obsolescence-to-optimization-how-to-revitalize-critical-machine-too.mp4" target="_blank">Watch Video</a>
+</p>
+
+<h3>Executive Summary</h3>
+<p>This article discusses how manufacturing companies can improve their older machines instead of replacing them with completely new equipment. During the IMTS 2026 conference, representatives from Fives and FANUC explained how upgrading existing machines can improve reliability, safety, maintenance, and production efficiency. They discussed using modern CNC controls, digital connectivity, and updated technology to make older machines work better with modern manufacturing systems. The main idea is that companies do not always need to purchase new machines to improve production. Modernizing existing equipment can sometimes be a more practical and cost-effective solution.</p>
+
+<h3>Industrial Engineering Connection</h3>
+<p>From an Industrial Engineering perspective, this article relates to lean manufacturing, equipment reliability, process improvement, and cost analysis. Industrial engineers must evaluate whether upgrading or replacing equipment will provide better results for a manufacturing system. Modernizing existing machines can help reduce production downtime, improve equipment performance, and extend machine life. It also supports lean manufacturing by reducing unnecessary spending and making better use of available resources. Engineers can use return on investment (ROI) calculations to compare different equipment improvement options.</p>
+
+<h3>Discussion Points</h3>
+<p>One important topic for discussion is whether manufacturing companies should upgrade old equipment or invest in new machines. Upgrading existing equipment may save money and reduce disruption to production, especially when the machines are still mechanically reliable. Another important point is how digital technology can improve older manufacturing systems by allowing machines to collect and share production information. The article also highlights the importance of employee training because workers need to understand how to operate and maintain updated equipment safely. A key question is how companies can determine when modernization provides better long-term value than replacement.</p>
+
+<h3>What I Learned</h3>
+<p>From this article, I learned that improving manufacturing efficiency does not always require purchasing new equipment. Sometimes, updating existing machines with modern controls and digital technology can provide significant improvements. I also learned that Industrial Engineers must consider equipment costs, maintenance, safety, employee training, and production downtime before making decisions. Another important lesson is that connecting machines to digital systems can help companies monitor production performance and identify problems more efficiently.</p>
+
+<h3>Engineering Analysis</h3>
+<p>One method for evaluating equipment modernization is calculating the return on investment.</p>
+
+<p class="formula">ROI (%) = [(Total Financial Benefits − Investment Cost) ÷ Investment Cost] × 100</p>
+
+<p>For example, suppose a company spends $50,000 upgrading an existing machine and receives $70,000 in total financial benefits over a defined evaluation period.</p>
+
+<p class="formula">ROI = [(70,000 − 50,000) ÷ 50,000] × 100</p>
+<p class="formula">ROI = 40%</p>
+
+<p>This hypothetical example shows how Industrial Engineers can use financial calculations to evaluate equipment modernization decisions. A complete analysis should also consider operating costs, downtime, and the time value of money.</p>
+
+<h3>Connection to Yasso Green Inc.</h3>
+<p>This article relates to my company, Yasso Green Inc., because our proposed perfume bottle factory will focus on lean manufacturing, reducing waste, and improving production efficiency. If our manufacturing equipment becomes outdated, we can evaluate whether upgrading it with modern controls and digital monitoring systems would be more cost-effective than purchasing new machines. For example, updating inspection equipment or automated assembly machines could help improve quality control and reduce production delays. This approach would support our goal of developing a flexible and efficient manufacturing system while controlling costs.</p>
+</section>
+
+<!-- ADDITIONAL ENGINEERING CONTENT -->
+<section class="report-section">
+<h2>Model Integration and Repeatable Engineering Workflow</h2>
+
+<p>Proposed information flow: customer requirements → A1 product design → A2 manufacturing → A3 inspection → A4 packaging and shipment. The digital information system stores revision-controlled CAD drawings, material specifications, inspection records, and production status. A3 sends nonconformance feedback to A2 and, when a design change is needed, to A1.</p>
+
+<p>Repeatable design decision procedure: (1) record customer requirements; (2) develop A111 CAD geometry; (3) evaluate candidate materials in A112; (4) check compatibility with A12 refillable components; (5) revise and repeat until design constraints are satisfied; (6) release the approved specifications to A2; (7) inspect trial output at A3 before packaging at A4.</p>
+
+<p>Proposed performance measures include defect rate, material utilization, and equipment modernization ROI. The numerical examples in this report are illustrative assumptions, not measured factory results. Collaboration with Autodesk, Verescence, Aptar Beauty, and Berlin Packaging is proposed, not a confirmed partnership.</p>
+</section>
+
+<section class="report-section">
+<h2>Publication and Verification Requirements</h2>
+
+<p>Publish the model descriptions, diagrams, and technical-article sections together on the IE 203 Assignment 3 webpage. Export diagrams as JPG if required by the professor and verify that they load on another computer or browser.</p>
+
+<p>The professor also requires actual discussions of at least three technical articles with at least one classmate. The existing Discussion Points sections are prepared prompts and do not establish that those conversations took place. Add a short factual record of the discussions once completed.</p>
+
+<p>The professor requests diagrams made with a 2D drawing tool such as Visio or equivalent. The embedded infographic images should be recreated or verified as appropriate 2D engineering drawings before submission.</p>
+</section>
+
+</div>
+</div>
+
+</body>
+</html>
