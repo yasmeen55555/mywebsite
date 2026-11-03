@@ -1,0 +1,952 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 4 - IE 203 - Yasso Green Inc.</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff5f8;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+
+.container {
+    background: white;
+    max-width: 950px;
+    margin: auto;
+    padding: 45px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.1),
+        0 0 18px rgba(255,180,200,.45),
+        0 0 38px rgba(255,210,225,.3);
+    animation:
+        pageOpen 1.2s ease-out,
+        outsideGlow 3s ease-in-out 1.2s infinite alternate;
+}
+
+@keyframes pageOpen {
+    0% {
+        opacity: 0;
+        transform: scale(.96);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.01);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes outsideGlow {
+    from {
+        box-shadow:
+            0 4px 12px rgba(0,0,0,.1),
+            0 0 12px rgba(255,180,200,.3),
+            0 0 25px rgba(255,210,225,.2);
+    }
+    to {
+        box-shadow:
+            0 4px 12px rgba(0,0,0,.1),
+            0 0 24px rgba(255,155,190,.6),
+            0 0 48px rgba(255,200,220,.4);
+    }
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border-radius: 13px;
+    pointer-events: none;
+    z-index: 3;
+    animation: innerGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes innerGlow {
+    from {
+        box-shadow:
+            inset 0 0 8px rgba(255,180,200,.3),
+            inset 0 0 18px rgba(255,215,225,.2);
+    }
+    to {
+        box-shadow:
+            inset 0 0 18px rgba(255,150,185,.65),
+            inset 0 0 35px rgba(255,205,220,.45);
+    }
+}
+
+.girly-border {
+    position: absolute;
+    inset: 12px;
+    border: 2px solid #f7ccd8;
+    border-radius: 13px;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow:
+        0 0 7px rgba(255,175,200,.5),
+        inset 0 0 7px rgba(255,200,215,.35);
+}
+
+/* FAIRY LIGHTS */
+.fairy-lights {
+    position: absolute;
+    top: 15px;
+    left: 8%;
+    width: 84%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.bulb {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f5a9bd;
+    box-shadow:
+        0 0 5px #f5a9bd,
+        0 0 12px #ffc6d5,
+        0 0 20px #ffe6ed;
+    animation: lightGlow 1.4s infinite alternate;
+}
+
+.bulb:nth-child(even) {
+    animation-delay: .5s;
+}
+
+.bulb:nth-child(3n) {
+    animation-delay: 1s;
+}
+
+@keyframes lightGlow {
+    from {
+        opacity: .25;
+        transform: scale(.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* DECORATIONS */
+.decoration {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bow {
+    font-size: 38px;
+    animation: bowFloat 4s ease-in-out infinite;
+}
+
+@keyframes bowFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+}
+
+.butterfly {
+    font-size: 30px;
+    animation: butterflyFly 5s ease-in-out infinite;
+}
+
+@keyframes butterflyFly {
+    0%, 100% {
+        transform: translate(0,0) rotate(-8deg);
+    }
+    50% {
+        transform: translate(12px,-15px) rotate(8deg);
+    }
+}
+
+.flower {
+    font-size: 28px;
+    animation: flowerFloat 4s ease-in-out infinite;
+}
+
+@keyframes flowerFloat {
+    0%, 100% {
+        transform: rotate(-5deg) scale(1);
+    }
+    50% {
+        transform: rotate(7deg) scale(1.1);
+    }
+}
+
+.heart {
+    color: #efa1b7;
+    text-shadow: 0 0 8px #ffd8e3;
+    animation: heartFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes heartFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+.sparkle {
+    color: #eaa0b6;
+    animation: glitter 1.3s infinite alternate;
+}
+
+@keyframes glitter {
+    from {
+        opacity: .15;
+        transform: scale(.5) rotate(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.4) rotate(25deg);
+    }
+}
+
+.glitter-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f7b5c7;
+    box-shadow: 0 0 10px #f5a9bd;
+    pointer-events: none;
+    z-index: 1;
+    animation: glitterDot 2s infinite alternate;
+}
+
+@keyframes glitterDot {
+    from {
+        opacity: .2;
+        transform: scale(.6);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* FALLING HEARTS */
+.heart-rain {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.falling-heart {
+    position: absolute;
+    top: -50px;
+    color: #f19db6;
+    opacity: 0;
+    text-shadow:
+        0 0 5px #ffb9ce,
+        0 0 10px #ffd2df,
+        0 0 18px #ffeaf0;
+    animation: heartFall 5.5s ease-in forwards;
+}
+
+@keyframes heartFall {
+    0% {
+        top: -50px;
+        opacity: 0;
+        transform: rotate(0);
+    }
+    8% {
+        opacity: .9;
+    }
+    30% {
+        transform: translateX(18px) rotate(90deg);
+    }
+    55% {
+        transform: translateX(-15px) rotate(180deg);
+    }
+    80% {
+        transform: translateX(15px) rotate(260deg);
+        opacity: .8;
+    }
+    100% {
+        top: 105vh;
+        opacity: 0;
+        transform: translateX(-8px) rotate(360deg);
+    }
+}
+
+/* PAGE CONTENT */
+.page-content {
+    position: relative;
+    z-index: 5;
+}
+
+h1 {
+    text-align: center;
+    color: #b76e79;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #b76e79;
+    margin-top: 35px;
+}
+
+h3 {
+    color: #6d4c55;
+}
+
+p, li {
+    line-height: 1.7;
+}
+
+.back {
+    display: inline-block;
+    background: #f7d6df;
+    color: #6d4c55;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.back:hover {
+    background: #efbdca;
+}
+
+.report-intro {
+    background: #fff5f8;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.report-section {
+    margin: 35px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f7d6df;
+}
+
+.report-section h2 {
+    background: #fff5f8;
+    border-left: 5px solid #e9a9be;
+    padding: 13px 16px;
+    border-radius: 8px;
+}
+
+.figure-placeholder {
+    margin: 26px 0;
+    padding: 24px;
+    border: 2px dashed #e9b7c8;
+    border-radius: 15px;
+    background: #fff8fa;
+    text-align: center;
+}
+
+.figure-placeholder h3 {
+    color: #b76e79;
+    margin-top: 0;
+}
+
+.figure-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+.image-pending {
+    padding: 55px 15px;
+    margin: 18px 0;
+    background: #fff0f5;
+    border: 2px dashed #edb8ca;
+    border-radius: 12px;
+    color: #b76e79;
+    font-weight: bold;
+}
+
+.caption {
+    font-weight: bold;
+    color: #6d4c55;
+}
+
+.description {
+    text-align: left;
+}
+
+.source-info {
+    background: #fff8fa;
+    padding: 15px;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+.article-link {
+    color: #b76e79;
+    text-decoration: underline;
+}
+
+.article-link:hover {
+    color: #8f4f5b;
+}
+
+.section-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.section-nav a {
+    background: #f7d6df;
+    color: #6d4c55;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.section-nav a:hover {
+    background: #efbdca;
+}
+
+.footer {
+    text-align: center;
+    color: #b76e79;
+    padding-top: 25px;
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 15px;
+    }
+    .container {
+        padding: 20px;
+    }
+    .bow {
+        font-size: 24px;
+    }
+    .butterfly, .flower {
+        font-size: 20px;
+    }
+    .heart {
+        opacity: .55;
+    }
+    .figure-placeholder {
+        padding: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FALLING HEARTS -->
+<div class="heart-rain" id="heartRain"></div>
+
+<div class="container">
+
+<div class="girly-border"></div>
+
+<!-- FAIRY LIGHTS -->
+<div class="fairy-lights" id="fairyLights"></div>
+
+<!-- DECORATIONS -->
+<div id="decorations"></div>
+
+<div class="page-content">
+
+<a class="back" href="index.html">
+    ← Back to Assignments
+</a>
+
+<h1>Assignment 4</h1>
+
+<div class="report-intro">
+    <h2>My 22 Visual Models and Computer Graphics in IE Designs</h2>
+    <p><strong>Yasso Green Inc.</strong></p>
+    <p>Perfume Bottle Manufacturing</p>
+    <p><strong>Yasmeen Mohamed</strong></p>
+    <p>IE 203 - Fall 2026</p>
+</div>
+
+<div class="section-nav">
+    <a href="#executive-summary">Executive Summary</a>
+    <a href="#introduction">Introduction</a>
+    <a href="#visual-models">22 Visual Models</a>
+    <a href="#sustainability">Green Analysis</a>
+    <a href="#articles">Technical Articles</a>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="report-section" id="executive-summary">
+
+<h2>1. Executive Summary</h2>
+
+<p>This assignment focuses on the use of computer graphics and visual management systems in industrial engineering. My virtual company, Yasso Green Inc., specializes in perfume bottle design and manufacturing, with an emphasis on quality, efficiency, safety, and sustainable production.</p>
+
+<p>The purpose of this project is to develop 22 original visual models that demonstrate how signs, diagrams, charts, and visual controls can improve daily factory operations. These models cover important manufacturing activities, including tool organization, inventory control, production performance, quality inspection, employee assistance, workplace safety, and continuous improvement.</p>
+
+<p>Visual communication is important because it helps employees understand information quickly without needing long written instructions. For example, color-coded displays can identify production problems, organized storage diagrams can reduce wasted time, and performance charts can help employees monitor manufacturing goals.</p>
+
+<p>The project also considers sustainable green engineering by exploring how visual factory systems can help reduce material waste, improve resource utilization, and support more environmentally responsible manufacturing practices.</p>
+
+<p>Through this assignment, I aim to demonstrate how computer graphics and industrial engineering principles can work together to create a safer, more organized, efficient, and sustainable perfume bottle manufacturing environment.</p>
+
+</section>
+
+<!-- INTRODUCTION -->
+<section class="report-section" id="introduction">
+
+<h2>2. Introduction to Visual Factory Design</h2>
+
+<p>Visual factory design is an important concept in industrial engineering because it uses signs, colors, charts, diagrams, and computer graphics to communicate information clearly and quickly. These visual tools help employees understand their responsibilities, identify problems, and follow correct manufacturing procedures.</p>
+
+<p>At Yasso Green Inc., my virtual perfume bottle manufacturing company, visual factory design can improve the production process from raw material storage to final product packaging. The manufacturing process includes bottle preparation, perfume filling, cap assembly, labeling, quality inspection, and packaging.</p>
+
+<p>Visual management systems can help organize these activities and make the workplace safer and more efficient. For example, color-coded storage areas can help employees locate materials, warning signs can identify potential hazards, and production dashboards can display daily manufacturing performance.</p>
+
+<p>Another important concept is lean manufacturing, which focuses on reducing waste and improving productivity. Visual controls support lean manufacturing by helping employees recognize missing tools, excess inventory, defective products, and unnecessary movements.</p>
+
+<p>Computer graphics also support sustainable green engineering. At Yasso Green Inc., visual displays can encourage responsible material usage, recycling, energy conservation, and waste reduction during perfume bottle manufacturing.</p>
+
+<p>The goal of this assignment is to create 22 original computer graphics models that demonstrate how visual communication can improve factory organization, product quality, employee safety, production efficiency, and environmental sustainability.</p>
+
+<p>These visual models will represent practical industrial engineering solutions that can be applied to the operations of Yasso Green Inc.</p>
+
+</section>
+
+<!-- 22 VISUAL MODELS -->
+<section class="report-section" id="visual-models">
+
+<h2>3. My 22 Original Visual Models</h2>
+
+<p>The following 22 computer graphics models demonstrate different visual factory management systems for Yasso Green Inc. Each figure includes a caption and a description explaining its industrial engineering purpose.</p>
+
+<div id="figures-container"></div>
+
+</section>
+
+<!-- SUSTAINABILITY -->
+<section class="report-section" id="sustainability">
+
+<h2>4. Sustainable Green Visual Factory Analysis</h2>
+
+<h3>Introduction</h3>
+
+<p>Sustainable green engineering is an important part of industrial engineering because it focuses on reducing waste, conserving resources, and improving manufacturing efficiency while protecting the environment. At Yasso Green Inc., my virtual perfume bottle manufacturing company, visual factory management can help employees follow environmentally responsible practices throughout the production process.</p>
+
+<h3>1. Waste Reduction</h3>
+
+<p>Yasso Green Inc. aims to reduce manufacturing waste by improving material handling, product inspection, and production planning. Visual displays can identify defective perfume bottles, unnecessary material usage, and areas where waste occurs.</p>
+
+<p>The company's proposed goal is to reduce manufacturing waste by 30%. Color-coded waste containers and recycling signs can help employees separate glass, plastic, and cardboard materials correctly.</p>
+
+<h3>2. Recycling and Reusing Materials</h3>
+
+<p>Glass perfume bottles and packaging materials are important resources in the manufacturing process. Yasso Green Inc. aims to recycle or reuse at least 90% of its glass waste.</p>
+
+<p>Visual recycling stations with clear labels can help employees identify recyclable materials and prevent unnecessary disposal. These systems support environmental sustainability and reduce material waste.</p>
+
+<h3>3. Energy Conservation</h3>
+
+<p>Energy conservation is another important goal at Yasso Green Inc. Manufacturing equipment, lighting, and production systems consume electricity during daily operations.</p>
+
+<p>The company proposes reducing energy consumption by 20% through energy-efficient equipment, preventive maintenance, and improved production scheduling.</p>
+
+<p>Visual energy-monitoring dashboards can help employees identify unnecessary energy consumption and encourage responsible equipment usage.</p>
+
+<h3>4. Water Conservation</h3>
+
+<p>Water may be used during equipment cleaning and other manufacturing activities. Yasso Green Inc. aims to reduce water consumption by 25%.</p>
+
+<p>Visual signs can remind employees to turn off unused water sources, report leaks, and follow efficient cleaning procedures. Where technically appropriate and safe, treated process water may be reused for suitable non-product-contact applications.</p>
+
+<h3>5. Lean Manufacturing and Visual Management</h3>
+
+<p>Lean manufacturing focuses on eliminating waste and improving productivity. At Yasso Green Inc., visual management systems can support lean principles through organized workstations, inventory control, quality inspection, and production monitoring.</p>
+
+<p>For example, 5S organization boards help employees maintain clean and organized workspaces, while inventory displays help prevent material shortages and unnecessary overstocking.</p>
+
+<p>Visual quality inspection systems also help identify defective products early, reducing unnecessary rework and material waste.</p>
+
+<h3>6. Sustainable Manufacturing Goals</h3>
+
+<p>Yasso Green Inc. has established the following proposed environmental targets:</p>
+
+<ul>
+    <li>Reduce manufacturing waste by at least 30%.</li>
+    <li>Recycle or reuse at least 90% of glass waste.</li>
+    <li>Reduce energy consumption by at least 20%.</li>
+    <li>Reduce water consumption by at least 25%.</li>
+    <li>Reduce carbon dioxide emissions by at least 15%.</li>
+</ul>
+
+<p>These targets can be monitored through visual dashboards, charts, and performance indicators to evaluate progress and identify opportunities for improvement.</p>
+
+<h3>Conclusion</h3>
+
+<p>Sustainable green engineering and visual factory management can work together to improve the environmental and operational performance of Yasso Green Inc. By using clear visual communication, organized manufacturing systems, recycling programs, and resource monitoring, the company can reduce waste, improve productivity, and encourage responsible manufacturing practices.</p>
+
+<p>This analysis demonstrates how industrial engineering and computer graphics can support a safer, more efficient, and environmentally sustainable perfume bottle manufacturing process.</p>
+
+</section>
+
+<!-- TECHNICAL ARTICLES -->
+<section class="report-section" id="articles">
+
+<h2>5. Social Networking and Technical Article Discussions</h2>
+
+<!-- ARTICLE 1 -->
+<h3>Article 1: Reducing Performance Losses in Utility-Scale Solar Plants: An O&amp;M Approach</h3>
+
+<div class="source-info">
+    <strong>Author:</strong> Shammi Thakur<br>
+    <strong>Date:</strong> October 19, 2026<br>
+    <strong>Source:</strong> Renewable Power Direct
+</div>
+
+<h3>Article Summary</h3>
+
+<p>This article explains how large solar power plants can lose energy because of dust accumulation, equipment problems, inverter faults, and poor maintenance. It discusses how engineers use monitoring systems, performance measurements, and preventive maintenance to identify problems before they become serious. The article also explains that maintenance teams should compare actual energy production with expected performance, identify the causes of energy losses, and verify that repairs improve efficiency.</p>
+
+<h3>Connection to Industrial Engineering</h3>
+
+<p>This article relates to Industrial Engineering because it focuses on improving system performance, reducing waste, and increasing efficiency. Industrial engineers use similar methods in manufacturing facilities to monitor equipment, reduce downtime, and improve productivity. At Yasso Green Inc., these principles could help improve perfume bottle production by monitoring machine performance, preventing equipment failures, and reducing unnecessary energy consumption.</p>
+
+<h3>What I Learned</h3>
+
+<p>I learned that equipment does not have to stop working completely to lose efficiency. Small problems, such as dirty equipment, incorrect settings, or delayed maintenance, can reduce overall performance. I also learned that monitoring systems and preventive maintenance can help engineers identify problems early and improve operational efficiency.</p>
+
+<hr>
+
+<!-- ARTICLE 2 -->
+<h3>Article 2: Clearway Starts Construction of 650-MW Solar Facility in Missouri</h3>
+
+<div class="source-info">
+    <strong>Author:</strong> Darrell Proctor<br>
+    <strong>Date:</strong> October 7, 2026<br>
+    <strong>Source:</strong> POWER Magazine
+</div>
+
+<h3>Article Summary</h3>
+
+<p>This article discusses Clearway Energy Group's construction of the Swan Energy Center, a 650-megawatt solar power facility in Missouri. The project represents a $1.5 billion investment and is expected to begin commercial operations in 2028. It will be built on land previously used for strip mining and will use American-made solar panels and equipment. The project is expected to create up to 500 construction jobs and provide long-term economic benefits to the local community. It also supports environmental sustainability by protecting natural habitats, improving soil conditions, and producing renewable energy.</p>
+
+<h3>Connection to Industrial Engineering</h3>
+
+<p>This article relates to Industrial Engineering because large renewable energy projects require effective planning, resource management, cost analysis, and coordination between different teams. Industrial engineers can help improve construction efficiency, manage materials, reduce waste, and optimize project operations. At Yasso Green Inc., similar engineering principles could be applied to reduce energy consumption, improve manufacturing processes, and support the company's sustainable green engineering goals.</p>
+
+<h3>What I Learned</h3>
+
+<p>I learned that renewable energy projects provide more than just clean electricity. They can also create jobs, support local communities, and improve environmental conditions. I also learned that engineering projects require careful financial planning, efficient resource management, and cooperation between different organizations to achieve long-term success.</p>
+
+<hr>
+
+<!-- ARTICLE 3 -->
+<h3>Article 3: From Underground Heat to Reliable Power: Engineering Geothermal for the Field</h3>
+
+<div class="source-info">
+    <strong>Author:</strong> Rene Leven<br>
+    <strong>Date:</strong> September 28, 2026<br>
+    <strong>Source:</strong> POWER Magazine
+</div>
+
+<h3>Article Summary</h3>
+
+<p>This article explains how geothermal energy uses heat from underground to generate electricity. It discusses how engineers design and maintain equipment such as turbines, pumps, mechanical seals, and filtration systems to ensure reliable energy production. The article also explains the importance of testing equipment before installation and monitoring operating conditions such as temperature, pressure, and vibration. These engineering practices help prevent equipment failures, reduce maintenance problems, and improve the reliability of geothermal power plants.</p>
+
+<h3>Connection to Industrial Engineering</h3>
+
+<p>This article relates to Industrial Engineering because it focuses on equipment reliability, preventive maintenance, quality control, and improving operational efficiency. Industrial engineers use similar methods to reduce downtime, improve production systems, and maintain safe working conditions. At Yasso Green Inc., these principles could be applied to perfume bottle manufacturing by regularly inspecting filling machines, monitoring equipment performance, and preventing unexpected breakdowns.</p>
+
+<h3>What I Learned</h3>
+
+<p>I learned that producing renewable energy requires more than having access to natural resources. Engineers must also design reliable equipment, perform testing, and maintain systems properly to ensure continuous operation. I also learned that identifying equipment problems early can reduce downtime, improve safety, and increase overall system efficiency.</p>
+
+</section>
+
+<div class="footer">
+    <p>🎀 Yasso Green Inc. 🎀</p>
+    <p>IE 203 - Fall 2026</p>
+    <p>Yasmeen Mohamed</p>
+    <a class="back" href="index.html">← Back to Assignments</a>
+</div>
+
+</div>
+</div>
+
+<script>
+/* DECORATIONS AND ANIMATIONS */
+
+/* FAIRY LIGHTS */
+const fairyLights = document.getElementById("fairyLights");
+
+for (let i = 0; i < 14; i++) {
+    const bulb = document.createElement("span");
+    bulb.className = "bulb";
+    fairyLights.appendChild(bulb);
+}
+
+/* FLOATING DECORATIONS */
+const decorations = document.getElementById("decorations");
+
+const decorationItems = [
+    ["🎀", "bow", "30px", "25px", "auto"],
+    ["🎀", "bow", "30px", "auto", "25px"],
+    ["🎀", "bow", "520px", "30px", "auto"],
+    ["🎀", "bow", "850px", "auto", "30px"],
+    ["🎀", "bow", "1200px", "28px", "auto"],
+    ["🎀", "bow", "1500px", "auto", "28px"],
+    ["🦋", "butterfly", "160px", "35px", "auto"],
+    ["🦋", "butterfly", "340px", "auto", "35px"],
+    ["🦋", "butterfly", "700px", "30px", "auto"],
+    ["🦋", "butterfly", "1080px", "auto", "35px"],
+    ["🦋", "butterfly", "1380px", "35px", "auto"],
+    ["🌸", "flower", "240px", "30px", "auto"],
+    ["🌷", "flower", "610px", "auto", "30px"],
+    ["🌸", "flower", "940px", "30px", "auto"],
+    ["🌷", "flower", "1280px", "auto", "30px"],
+    ["🌸", "flower", "1600px", "30px", "auto"],
+    ["♥", "heart", "100px", "100px", "auto"],
+    ["♡", "heart", "180px", "auto", "90px"],
+    ["♡", "heart", "430px", "28px", "auto"],
+    ["♥", "heart", "540px", "auto", "25px"],
+    ["♥", "heart", "760px", "auto", "35px"],
+    ["♡", "heart", "860px", "35px", "auto"],
+    ["♥", "heart", "1050px", "28px", "auto"],
+    ["♡", "heart", "1180px", "auto", "30px"],
+    ["♥", "heart", "1350px", "28px", "auto"],
+    ["♡", "heart", "1480px", "auto", "28px"],
+    ["♥", "heart", "1650px", "40px", "auto"],
+    ["♡", "heart", "1780px", "auto", "35px"],
+    ["✦", "sparkle", "90px", "auto", "150px"],
+    ["✧", "sparkle", "280px", "100px", "auto"],
+    ["✦", "sparkle", "480px", "auto", "100px"],
+    ["✧", "sparkle", "680px", "90px", "auto"],
+    ["✦", "sparkle", "900px", "auto", "90px"],
+    ["✧", "sparkle", "1120px", "90px", "auto"],
+    ["✦", "sparkle", "1320px", "auto", "100px"],
+    ["✧", "sparkle", "1550px", "100px", "auto"],
+    ["✦", "sparkle", "1750px", "auto", "100px"]
+];
+
+decorationItems.forEach(item => {
+    const element = document.createElement("div");
+    element.className = "decoration " + item[1];
+    element.textContent = item[0];
+    element.style.top = item[2];
+    element.style.left = item[3];
+    element.style.right = item[4];
+    decorations.appendChild(element);
+});
+
+/* GLITTER DOTS */
+for (let i = 0; i < 8; i++) {
+    const dot = document.createElement("span");
+    dot.className = "glitter-dot";
+    dot.style.top = (200 + i * 210) + "px";
+
+    if (i % 2 === 0) {
+        dot.style.left = "14%";
+    } else {
+        dot.style.right = "14%";
+    }
+
+    decorations.appendChild(dot);
+}
+
+/* FALLING HEARTS */
+const heartRain = document.getElementById("heartRain");
+
+for (let i = 0; i < 24; i++) {
+    const heart = document.createElement("span");
+    heart.className = "falling-heart";
+    heart.textContent = i % 2 === 0 ? "♥" : "♡";
+    heart.style.left = ((i * 17) % 97) + "%";
+    heart.style.fontSize = (14 + (i % 12)) + "px";
+    heart.style.animationDelay = ((i * 0.37) % 2.7) + "s";
+    heartRain.appendChild(heart);
+}
+
+/* ALL 22 FIGURES FROM ASSIGNMENT 4 DOCUMENT */
+
+const figures = [
+{
+    title: "5S Tool Organization Board",
+    description: `This visual model demonstrates how tools used in perfume bottle manufacturing are organized in clearly labeled, designated locations. It applies the 5S principles: Sort, Set in Order, Shine, Standardize, and Sustain. This system helps employees quickly locate tools, identify missing equipment, reduce unnecessary movement, and maintain a safe and efficient workplace.`
+},
+{
+    title: "Perfume Bottle Materials Storage System",
+    description: `This visual model shows how materials used in perfume bottle manufacturing are organized in designated storage locations. Glass bottles, caps, perfume fragrance, spray pumps, packaging boxes, and product labels are assigned specific locations with identification codes. This system helps employees locate materials quickly, prevent confusion, reduce unnecessary movement, and improve production efficiency.`
+},
+{
+    title: "Inventory Control Board",
+    description: `This visual model illustrates how inventory levels are monitored during perfume bottle manufacturing. It displays current stock quantities, minimum and maximum inventory limits, and color-coded status indicators for glass bottles, caps, perfume fragrance, spray pumps, packaging boxes, and labels. This system helps employees identify shortages, reorder materials on time, reduce excess inventory, and maintain efficient production operations.`
+},
+{
+    title: "Production Performance Dashboard",
+    description: `This visual model illustrates the manufacturing performance of Yasso Green Inc. by displaying daily production targets, actual production, efficiency, and defect rates. The dashboard uses charts and color-coded indicators to help employees compare production results with company goals, identify performance problems, maintain product quality, and improve manufacturing efficiency.`
+},
+{
+    title: "Non-Conformance Warning Display",
+    description: `This visual model identifies defective perfume bottles during the quality inspection process. It highlights common manufacturing problems, including cracked glass, air bubbles, damaged bottle edges, and incorrect filling levels. Red warning indicators identify defective products, while green indicators represent accepted products. This system helps employees recognize quality problems, separate defective items, prevent faulty products from reaching customers, and improve manufacturing quality.`
+},
+{
+    title: "Quality Inspection Non-Conformance Alert",
+    description: `This visual model illustrates a quality inspection system used to identify manufacturing defects in perfume bottles. The display shows the number of inspected products, accepted bottles, rejected bottles, and the overall defect rate. Red warning indicators alert employees to quality problems such as scratched surfaces, misaligned caps, incorrect filling levels, and contamination. This system helps employees identify defective products, take corrective action, and maintain consistent manufacturing quality.`
+},
+{
+    title: "Maintenance Assistance Alert System",
+    description: `This visual model illustrates a maintenance assistance system used in perfume bottle manufacturing. When a filling machine experiences a technical problem, the system displays a red warning signal, identifies the affected machine, and indicates that maintenance assistance is required. This visual control helps employees quickly report equipment problems, reduce production downtime, improve workplace safety, and maintain efficient manufacturing operations.`
+},
+{
+    title: "Assembly Station Help Request System",
+    description: `This visual model illustrates how employees at a perfume bottle assembly station can request assistance when a production problem occurs. The system includes a help request button, a warning light, and a digital display identifying the station and the type of assistance needed. This visual communication system helps employees quickly notify supervisors, resolve assembly problems, reduce production delays, and maintain efficient manufacturing operations.`
+},
+{
+    title: "Employee Information Display",
+    description: `This visual model illustrates an employee information board used in perfume bottle manufacturing. It displays daily work schedules, production goals, manufacturing instructions, safety reminders, quality requirements, and important company announcements. The color-coded sections help employees quickly understand their responsibilities, follow proper procedures, and stay informed about factory operations. This system improves workplace communication, safety, productivity, and teamwork.`
+},
+{
+    title: "Monthly Production and Quality Information Display",
+    description: `This visual model presents monthly production and quality information for employees at Yasso Green Inc. It compares actual perfume bottle production with the monthly target and displays the number of accepted and defective products. The charts also show improvements in quality performance over time. This information helps employees understand factory results, recognize achievements, identify areas needing improvement, and work toward production and quality goals.`
+},
+{
+    title: "Visual Perfume Bottle Assembly Instructions",
+    description: `This visual model demonstrates the step-by-step assembly process used in perfume bottle manufacturing. It guides employees through bottle preparation, fragrance filling, spray pump installation, cap attachment, labeling, and packaging. The numbered illustrations, arrows, and quality checkpoints help employees follow the correct manufacturing sequence, reduce assembly errors, maintain product quality, and improve production efficiency.`
+},
+{
+    title: "Visual Quality Inspection Checklist",
+    description: `This visual model demonstrates a step-by-step quality inspection procedure for perfume bottle manufacturing. Employees use the checklist to examine bottle condition, filling levels, spray pump functionality, cap alignment, and label placement. Green checkmarks identify acceptable products, while red warning symbols indicate defects. This visual control helps employees follow standardized inspection procedures, prevent defective products from reaching customers, and maintain consistent product quality.`
+},
+{
+    title: "Company Manufacturing Goals Display",
+    description: `This visual model presents the main manufacturing goals of Yasso Green Inc., including producing at least 50,000 perfume bottles per month, maintaining a defect rate below 2%, achieving at least 98% on-time delivery, preventing workplace accidents, and improving production efficiency. The display uses color-coded indicators, charts, and performance targets to communicate company objectives clearly. This system helps employees understand factory priorities, monitor progress, and work together toward continuous improvement.`
+},
+{
+    title: "Sustainable Green Engineering Goals",
+    description: `This visual model presents the environmental sustainability goals of Yasso Green Inc. during perfume bottle manufacturing. The display highlights targets for reducing manufacturing waste by 30%, recycling or reusing at least 90% of glass waste, reducing energy consumption by 20%, conserving water by 25%, and lowering carbon dioxide emissions by 15%. These visual goals encourage employees to follow environmentally responsible practices, reduce resource consumption, and support sustainable green engineering.`
+},
+{
+    title: "Key Performance Indicators (KPI) Dashboard",
+    description: `This visual model presents the key performance indicators used to measure perfume bottle manufacturing operations at Yasso Green Inc. It displays monthly production output, defect rates, on-time delivery performance, production efficiency, and workplace safety. The dashboard uses charts, numerical values, and color-coded indicators to help employees monitor operational performance, evaluate manufacturing results, and identify opportunities for continuous improvement.`
+},
+{
+    title: "Worker Safety and Ergonomics Performance Dashboard",
+    description: `This visual model presents key workplace safety and ergonomics measurements in perfume bottle manufacturing. It displays injury rates, ergonomic complaints, days without injuries, safety training completion, and workstation compliance. The dashboard also compares incorrect and correct working postures and highlights improvements such as adjustable workstations, proper material placement, and reduced repetitive movements. These visual measures help employees and managers monitor workplace conditions, identify ergonomic risks, prevent injuries, and maintain a safer manufacturing environment.`
+},
+{
+    title: "Production Performance Versus Manufacturing Goals",
+    description: `This visual model compares actual perfume bottle manufacturing performance with the company's established production goals. It presents monthly production output, defect rates, on-time delivery performance, and workplace safety results. The charts and color-coded indicators help employees identify whether manufacturing targets have been achieved. This visual system supports performance monitoring, continuous improvement, and better decision-making to maintain efficient factory operations.`
+},
+{
+    title: "Defect Reduction Progress Versus Quality Goal",
+    description: `This visual model illustrates the improvement in product quality during perfume bottle manufacturing at Yasso Green Inc. It compares monthly defect rates with the company's quality goal of 2% or less. The chart shows a reduction in defects from 3.0% in June to 1.8% in October, representing a 40% decrease in the defect rate. It also identifies common defects, including damaged bottles, incorrect filling levels, spray pump problems, and labeling errors. This visual system helps employees monitor quality improvements, identify manufacturing problems, and maintain consistent production standards.`
+},
+{
+    title: "Production Bottleneck Analysis",
+    description: `This visual model identifies production bottlenecks that prevent Yasso Green Inc. from achieving its perfume bottle manufacturing goals. It compares the cycle times of bottle preparation, fragrance filling, spray pump assembly, cap attachment, and packaging. The analysis identifies spray pump assembly as the slowest operation, causing production delays and reducing manufacturing capacity. The display also presents improvement strategies, including semi-automatic equipment, employee training, improved material availability, and production line balancing.`
+},
+{
+    title: "Equipment Downtime Analysis",
+    description: `This visual model identifies equipment downtime as an obstacle to achieving production goals at Yasso Green Inc. It illustrates how machine malfunctions, setup delays, maintenance activities, and material shortages affect perfume bottle manufacturing. The dashboard compares planned production time with actual operating time and calculates equipment availability at 87.5%. It also shows how 60 minutes of downtime can result in a loss of 60 perfume bottles per shift. Proposed improvements include preventive maintenance, employee training, better material management, and faster equipment setup procedures.`
+},
+{
+    title: "Individual Employee Contributions to Factory Success",
+    description: `This visual model demonstrates how individual employees contribute to the overall success of Yasso Green Inc. during perfume bottle manufacturing. It highlights employee responsibilities in bottle preparation, fragrance filling, spray pump assembly, capping, labeling, and packaging. By following standard operating procedures, maintaining product quality, reporting problems, and practicing workplace safety, employees help increase productivity, reduce defects, improve on-time delivery, and support sustainable manufacturing goals.`
+},
+{
+    title: "Employee Performance and Teamwork Contribution Dashboard",
+    description: `This visual model demonstrates how individual employee performance and teamwork contribute to the success of Yasso Green Inc. It compares production targets and actual results across different workstations, including bottle preparation, filling, spray pump assembly, capping, labeling, and packaging. The dashboard also highlights how employees improve manufacturing quality, reduce defects, maintain workplace safety, and support on-time delivery. By encouraging communication, cooperation, and continuous improvement, employees help the company achieve its overall manufacturing and sustainability goals.`
+}
+];
+
+/* CREATE FIGURE SECTIONS */
+/* Pictures will be uploaded later as figure1.png ... figure22.png */
+
+const figuresContainer = document.getElementById("figures-container");
+
+figures.forEach((figure, index) => {
+    const number = index + 1;
+
+    const box = document.createElement("div");
+    box.className = "figure-placeholder";
+    box.id = "figure-" + number;
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Figure " + number + ": " + figure.title;
+    box.appendChild(heading);
+
+    const image = document.createElement("img");
+    image.className = "figure-image";
+    image.src = "figure" + number + ".png";
+    image.alt = "Figure " + number + ": " + figure.title;
+    image.loading = "lazy";
+
+    const pending = document.createElement("div");
+    pending.className = "image-pending";
+    pending.textContent = "🎀 Figure " + number + " — Image will be uploaded soon 🎀";
+
+    image.style.display = "none";
+
+    image.onload = function() {
+        image.style.display = "block";
+        pending.style.display = "none";
+    };
+
+    image.onerror = function() {
+        image.style.display = "none";
+        pending.style.display = "block";
+    };
+
+    box.appendChild(image);
+    box.appendChild(pending);
+
+    const caption = document.createElement("p");
+    caption.className = "caption";
+    caption.textContent =
+        "Caption: Figure " + number + ". " + figure.title +
+        " for Yasso Green Inc., created by Yasmeen Mohamed using computer graphics software.";
+    box.appendChild(caption);
+
+    const description = document.createElement("p");
+    description.className = "description";
+
+    const bold = document.createElement("strong");
+    bold.textContent = "Description: ";
+    description.appendChild(bold);
+    description.appendChild(document.createTextNode(figure.description));
+
+    box.appendChild(description);
+    figuresContainer.appendChild(box);
+});
+</script>
+
+</body>
+</html>
